@@ -11,7 +11,7 @@ export function Navbar() {
             <img
               src={assetPath('logo_light.png')}
               alt="Mianotes"
-              className="h-8 w-auto" />
+              className="h-[58px] w-auto" />
             
           </div>
 
