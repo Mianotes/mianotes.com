@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Overview } from './components/Overview';
+import { WhyMianotes } from './components/WhyMianotes';
 import { Screens } from './components/Screens';
 import { HowItWorks } from './components/HowItWorks';
 import { MeetMia } from './components/MeetMia';
@@ -16,6 +17,7 @@ export function App() {
       <main className="flex-grow">
         <Hero />
         <Overview />
+        <WhyMianotes />
         <Screens />
         <HowItWorks />
         <MeetMia />

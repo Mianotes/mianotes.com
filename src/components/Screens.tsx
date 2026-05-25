@@ -10,27 +10,27 @@ type Screen = {
 };
 const screens: Screen[] = [
 {
-  title: 'Dashboard',
+  title: 'Provide context',
   description:
-  'Browse folders, users, tags, recent notes, and searchable Markdown from one clean control room.',
+  'Give agents the files, links, screenshots, notes, and background they need to understand the task.',
   image: assetPath('screens/screen_dashboard.png')
 },
 {
-  title: 'Console',
+  title: 'Save information',
   description:
-  'Track parsing and indexing for URLs, files, audio, and other source material with clear status updates.',
+  'Agents save decisions, implementation notes, summaries, source links, and project context as they work.',
   image: assetPath('screens/screen_console.png')
 },
 {
-  title: 'Editor',
+  title: 'Review the work',
   description:
-  'Read polished Markdown, edit it, and ask Mia to summarise, restructure, or extract useful details.',
+  'Use the dashboard and editor to read, improve, tag, and organise what your agents documented.',
   image: assetPath('screens/screen_editor.png')
 },
 {
-  title: 'Publish',
+  title: 'Publish the result',
   description:
-  'Choose folders and tags, then generate a static HTML documentation site from selected notes.',
+  'Turn selected notes into a clean static site you can share with your team, clients, or future agents.',
   image: assetPath('screens/screen_publish.png')
 }];
 
@@ -50,37 +50,8 @@ export function Screens() {
     };
   }, [active]);
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-200/60">
+    <section className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            For agents
-          </h2>
-          <p className="text-xl text-slate-700 leading-relaxed">
-            Your agents are already creating useful context. Mianotes makes it
-            permanent, searchable, and reusable.
-          </p>
-          <div className="mt-6 space-y-5 text-lg text-slate-600 leading-relaxed">
-            <p>
-              AI agents write plans, explain changes, debug issues, summarise
-              research, and leave useful context behind. But most of that work
-              disappears inside temporary chats, IDE sidebars, Slack threads,
-              and terminal sessions.
-            </p>
-            <p>
-              Mianotes gives that work a place to live. Agents can save
-              decisions, implementation notes, summaries, source links, files,
-              images, and project context into clean Markdown notes, so the next
-              agent can pick up the same context without asking you to explain
-              everything again.
-            </p>
-            <p>
-              Humans can review, edit, publish, and reuse that knowledge through
-              the web app.
-            </p>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {screens.map((screen) =>
           <div
