@@ -42,9 +42,9 @@ export function MeetMia() {
             {/* Column 1: Mia Character */}
             <div className="overflow-hidden bg-[#efefef]">
               {/* Mia visual */}
-              <div className="aspect-[1600/420] overflow-hidden">
+              <div className="aspect-[2172/724] overflow-hidden">
                 <img
-                  src={assetPath('mia_document_agent.png')}
+                  src={assetPath('mia_document_agent.jpg')}
                   alt="Mia, your documentation agent"
                   className="h-full w-full object-cover" />
                 
