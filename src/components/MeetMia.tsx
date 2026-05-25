@@ -14,9 +14,9 @@ export function MeetMia() {
     <section id="agents" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-50 rounded-3xl border border-slate-200/60 overflow-hidden shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div className="grid grid-cols-1">
             {/* Column 1: Mia Character */}
-            <div className="lg:col-span-3 relative bg-gradient-to-b from-purple-50 via-white to-purple-50 overflow-hidden min-h-[320px] lg:min-h-[560px] border-b lg:border-b-0 lg:border-r border-slate-200/60">
+            <div className="relative bg-gradient-to-b from-purple-50 via-white to-purple-50 overflow-hidden min-h-[320px] border-b border-slate-200/60">
               {/* soft glow */}
               <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-purple-200/50 to-transparent blur-2xl pointer-events-none"></div>
               {/* sparkle dots */}
@@ -44,7 +44,7 @@ export function MeetMia() {
             </div>
 
             {/* Column 2: Intro */}
-            <div className="lg:col-span-5 p-10 lg:p-12 flex flex-col justify-center relative border-b lg:border-b-0 lg:border-r border-slate-200/60">
+            <div className="p-10 lg:p-12 flex flex-col justify-center relative border-b border-slate-200/60">
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-slate-900 mb-4">
                   Meet <span className="text-brand-purple">Mia</span>
@@ -84,7 +84,7 @@ export function MeetMia() {
             </div>
 
             {/* Column 3: Capabilities */}
-            <div className="lg:col-span-4 p-10 lg:p-12 bg-white flex flex-col justify-center">
+            <div className="p-10 lg:p-12 bg-white flex flex-col justify-center">
               <h4 className="text-lg font-semibold text-slate-900 mb-8">
                 What Mia can do for you:
               </h4>
