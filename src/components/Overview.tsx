@@ -14,12 +14,14 @@ export function Overview() {
           </p>
         </div>
 
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60 bg-slate-50 p-2 sm:p-4">
+        <div className="relative mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 bg-slate-50 p-2 sm:p-3">
           <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-blue-500/5 pointer-events-none"></div>
-          <img
-            src={assetPath('mianotes_intro.png')}
-            alt="Mianotes Overview Infographic"
-            className="w-full h-auto rounded-xl shadow-sm border border-slate-100 relative z-10" />
+          <video
+            src={assetPath('video/example.mp4')}
+            controls
+            playsInline
+            preload="metadata"
+            className="relative z-10 block w-full rounded-xl border border-slate-100 bg-slate-950 shadow-sm" />
           
         </div>
       </div>
