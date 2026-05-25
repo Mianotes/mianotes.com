@@ -52,14 +52,33 @@ export function Screens() {
   return (
     <section className="py-24 bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-12 max-w-4xl">
           <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
             Four screens. One shared knowledge hub.
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            A web app for humans, with APIs and MCP for agents. Each screen
-            turns raw context into durable, useful Markdown knowledge.
+          <p className="text-xl text-slate-700 leading-relaxed">
+            Your agents are already creating useful context. Mianotes makes it
+            permanent, searchable, and reusable.
           </p>
+          <div className="mt-6 space-y-5 text-lg text-slate-600 leading-relaxed">
+            <p>
+              AI agents write plans, explain changes, debug issues, summarise
+              research, and leave useful context behind. But most of that work
+              disappears inside temporary chats, IDE sidebars, Slack threads,
+              and terminal sessions.
+            </p>
+            <p>
+              Mianotes gives that work a place to live. Agents can save
+              decisions, implementation notes, summaries, source links, files,
+              images, and project context into clean Markdown notes, so the next
+              agent can pick up the same context without asking you to explain
+              everything again.
+            </p>
+            <p>
+              Humans can review, edit, publish, and reuse that knowledge through
+              the web app.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
