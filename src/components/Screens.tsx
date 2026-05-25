@@ -77,7 +77,7 @@ export function Screens() {
                 <img
                 src={screen.image}
                 alt=""
-                className="h-full w-full object-cover object-top" />
+                className="h-full w-full object-contain object-top" />
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-slate-900 shadow-lg">
                     Click to expand
@@ -139,7 +139,7 @@ export function Screens() {
               duration: 0.25,
               ease: 'easeOut'
             }}
-            className="relative w-full max-w-6xl">
+            className="relative flex max-h-[calc(100vh-4rem)] w-full max-w-5xl flex-col">
             
               {/* Close button */}
               <button
@@ -152,14 +152,14 @@ export function Screens() {
                 <span aria-hidden="true">]</span>
               </button>
 
-              {/* Large cropped screenshot */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+              {/* Large screenshot */}
+              <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
                 <img
                 src={active.image}
                 alt={`${active.title} screenshot, full size`}
-                className="w-full" />
+                className="min-h-0 w-full flex-1 object-contain" />
               
-                <div className="px-6 py-4 border-t border-slate-200 bg-white">
+                <div className="shrink-0 px-6 py-4 border-t border-slate-200 bg-white">
                   <h3 className="text-lg font-semibold text-slate-900">
                     {active.title}
                   </h3>
