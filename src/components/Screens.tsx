@@ -3,37 +3,35 @@ import { X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { assetPath } from '../assets';
 
-const SOURCE = assetPath('mianotes_event_poster_A4.png');
-
 type Screen = {
   title: string;
   description: string;
-  position: string;
+  image: string;
 };
 const screens: Screen[] = [
 {
   title: 'Dashboard',
   description:
   'Browse folders, users, tags, recent notes, and searchable Markdown from one clean control room.',
-  position: '0% 18%'
+  image: assetPath('screens/screen_dashboard.png')
 },
 {
-  title: 'Jobs',
+  title: 'Console',
   description:
   'Track parsing and indexing for URLs, files, audio, and other source material with clear status updates.',
-  position: '100% 18%'
+  image: assetPath('screens/screen_console.png')
 },
 {
-  title: 'Notes + Mia',
+  title: 'Editor',
   description:
   'Read polished Markdown, edit it, and ask Mia to summarise, restructure, or extract useful details.',
-  position: '0% 100%'
+  image: assetPath('screens/screen_editor.png')
 },
 {
   title: 'Publish',
   description:
   'Choose folders and tags, then generate a static HTML documentation site from selected notes.',
-  position: '100% 100%'
+  image: assetPath('screens/screen_publish.png')
 }];
 
 export function Screens() {
@@ -73,14 +71,13 @@ export function Screens() {
               {/* Screenshot - clickable */}
               <button
               onClick={() => setActive(screen)}
-              className="group relative block w-full aspect-[16/10] bg-slate-100 bg-no-repeat overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
-              style={{
-                backgroundImage: `url('${SOURCE}')`,
-                backgroundSize: '210% auto',
-                backgroundPosition: screen.position
-              }}
+              className="group relative block w-full aspect-[16/10] bg-slate-100 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
               aria-label={`Open ${screen.title} screenshot at full size`}>
               
+                <img
+                src={screen.image}
+                alt=""
+                className="h-full w-full object-cover object-top" />
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-slate-900 shadow-lg">
                     Click to expand
@@ -142,29 +139,25 @@ export function Screens() {
               duration: 0.25,
               ease: 'easeOut'
             }}
-            className="relative w-full max-w-6xl"
-            onClick={(e) => e.stopPropagation()}>
+            className="relative w-full max-w-6xl">
             
               {/* Close button */}
               <button
               onClick={() => setActive(null)}
-              className="absolute -top-12 right-0 sm:-top-2 sm:-right-12 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur text-white flex items-center justify-center transition-colors"
+              className="fixed right-5 top-5 z-10 inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white text-sm font-semibold text-slate-950 shadow-xl transition-colors hover:bg-slate-100"
               aria-label="Close">
               
-                <X className="w-5 h-5" />
+                <span aria-hidden="true">[</span>
+                <X className="mx-0.5 h-4 w-4" />
+                <span aria-hidden="true">]</span>
               </button>
 
               {/* Large cropped screenshot */}
               <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
-                <div
-                className="w-full aspect-[16/10] bg-no-repeat"
-                style={{
-                  backgroundImage: `url('${SOURCE}')`,
-                  backgroundSize: '210% auto',
-                  backgroundPosition: active.position
-                }}
-                role="img"
-                aria-label={`${active.title} screenshot, full size`} />
+                <img
+                src={active.image}
+                alt={`${active.title} screenshot, full size`}
+                className="w-full" />
               
                 <div className="px-6 py-4 border-t border-slate-200 bg-white">
                   <h3 className="text-lg font-semibold text-slate-900">
