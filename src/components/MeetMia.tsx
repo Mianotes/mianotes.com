@@ -3,12 +3,36 @@ import { CheckCircle2 } from 'lucide-react';
 import { assetPath } from '../assets';
 export function MeetMia() {
   const capabilities = [
-  'Summarize long notes and documents',
-  'Extract key information and make it structured',
-  'Improve structure and formatting',
-  'Rewrite for clarity and tone',
-  'Prepare context for humans and other agents',
-  'Keep knowledge up to date automatically'];
+  {
+    title: 'Convert sources to Markdown',
+    copy:
+    'Turn images, documents, URLs, and audio files into clean Markdown your agents can read and reuse.'
+  },
+  {
+    title: 'Work with other agents',
+    copy:
+    'Give Codex, Claude Code, Cursor, VS Code, Slack, and MCP tools a shared place to write and retrieve context.'
+  },
+  {
+    title: 'Process files offline',
+    copy:
+    'Use a local LLM to read private files on your own machine, without sending them to a cloud service.'
+  },
+  {
+    title: 'Summarise long material',
+    copy:
+    'Extract the decisions, action items, names, dates, and details that matter from messy notes and documents.'
+  },
+  {
+    title: 'Improve every note',
+    copy:
+    'Rewrite for clarity, improve structure, clean up formatting, and keep the original context close.'
+  },
+  {
+    title: 'Keep knowledge useful',
+    copy:
+    'Organise project memory into durable notes that stay readable for humans and useful for agents.'
+  }];
 
   return (
     <section id="agents" className="py-24 bg-white overflow-hidden">
@@ -88,13 +112,23 @@ export function MeetMia() {
               <h4 className="text-lg font-semibold text-slate-900 mb-8">
                 What Mia can do for you:
               </h4>
-              <ul className="space-y-5">
+              <ul className="grid gap-4 md:grid-cols-2">
                 {capabilities.map((item, index) =>
-                <li key={index} className="flex items-start gap-3">
-                    <div className="shrink-0 mt-1">
+                <li
+                  key={index}
+                  className="flex items-start gap-4 rounded-2xl border border-slate-200/70 bg-slate-50 p-5">
+                  
+                    <div className="shrink-0 mt-0.5">
                       <CheckCircle2 className="w-5 h-5 text-brand-purple" />
                     </div>
-                    <span className="text-base text-slate-700">{item}</span>
+                    <div>
+                      <h5 className="font-semibold text-slate-900">
+                        {item.title}
+                      </h5>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        {item.copy}
+                      </p>
+                    </div>
                   </li>
                 )}
               </ul>
