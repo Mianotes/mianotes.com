@@ -78,7 +78,7 @@ export const OpenClawIcon = ({ className = 'h-5 w-5' }: IconProps) =>
   shapeRendering="crispEdges"
   aria-hidden="true">
   
-    <g fill="#3a0a0d">
+    <g fill="currentColor">
       <rect x="1" y="5" width="1" height="3" />
       <rect x="2" y="4" width="1" height="1" />
       <rect x="2" y="8" width="1" height="1" />
@@ -99,7 +99,7 @@ export const OpenClawIcon = ({ className = 'h-5 w-5' }: IconProps) =>
       <rect x="12" y="13" width="1" height="1" />
       <rect x="5" y="14" width="6" height="1" />
     </g>
-    <g fill="#ff4f40">
+    <g fill="currentColor">
       <rect x="5" y="3" width="6" height="1" />
       <rect x="4" y="4" width="8" height="1" />
       <rect x="3" y="5" width="10" height="3" />
@@ -108,7 +108,7 @@ export const OpenClawIcon = ({ className = 'h-5 w-5' }: IconProps) =>
       <rect x="5" y="12" width="6" height="1" />
       <rect x="6" y="13" width="4" height="1" />
     </g>
-    <g fill="#ff775f">
+    <g fill="currentColor">
       <rect x="1" y="6" width="2" height="1" />
       <rect x="2" y="5" width="1" height="1" />
       <rect x="2" y="7" width="1" height="1" />
@@ -116,11 +116,11 @@ export const OpenClawIcon = ({ className = 'h-5 w-5' }: IconProps) =>
       <rect x="13" y="5" width="1" height="1" />
       <rect x="13" y="7" width="1" height="1" />
     </g>
-    <g fill="#081016">
+    <g fill="currentColor">
       <rect x="6" y="5" width="1" height="1" />
       <rect x="9" y="5" width="1" height="1" />
     </g>
-    <g fill="#f5fbff">
+    <g fill="currentColor">
       <rect x="6" y="4" width="1" height="1" />
       <rect x="9" y="4" width="1" height="1" />
     </g>

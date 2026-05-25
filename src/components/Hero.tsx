@@ -60,8 +60,10 @@ export function Hero() {
 
           <p className="mt-4 text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
             Mianotes gives Codex, Claude Code, Cursor, VS Code, Slack, and local
-            agents a place to write down what they're doing — saving decisions,
-            changes, and project context into clean Markdown you control.
+            agents a local-first workspace for documenting their work in
+            Markdown. Everything stays private, portable, readable, and under
+            your control, whether you run it on your computer or your own
+            server.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
