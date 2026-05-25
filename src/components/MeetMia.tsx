@@ -39,53 +39,50 @@ export function MeetMia() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-50 rounded-3xl border border-slate-200/60 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1">
-            {/* Column 1: Mia Character */}
-            <div className="overflow-hidden bg-[#efefef]">
-              {/* Mia visual */}
-              <div className="aspect-[2172/724] overflow-hidden">
+            <div className="grid grid-cols-1 border-b border-slate-200/60 lg:grid-cols-12">
+              {/* Column 1: Mia Character */}
+              <div className="relative min-h-[360px] overflow-hidden bg-[#efefef] lg:col-span-3">
                 <img
-                  src={assetPath('mia_document_agent.jpg')}
-                  alt="Mia, your documentation agent"
-                  className="h-full w-full object-cover" />
-                
+                src={assetPath('mia_document_agent.jpg')}
+                alt="Mia, your documentation agent"
+                className="absolute inset-0 h-full w-full object-cover object-center" />
+              
               </div>
-            </div>
 
-            {/* Column 2: Intro */}
-            <div className="p-10 lg:p-12 flex flex-col justify-center relative border-b border-slate-200/60">
-              <div className="relative z-10">
-                <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                  Meet <span className="text-brand-purple">Mia</span>
-                </h2>
-                <h3 className="text-2xl font-medium text-slate-700 mb-6">
-                  Your documentation agent.
-                </h3>
+              {/* Column 2: Intro */}
+              <div className="p-10 lg:col-span-9 lg:p-12 flex flex-col justify-center relative">
+                <div className="relative z-10">
+                  <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                    Meet <span className="text-brand-purple">Mia</span>
+                  </h2>
+                  <h3 className="text-2xl font-medium text-slate-700 mb-6">
+                    Your documentation agent.
+                  </h3>
 
-                <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                  Mia helps you and your agents turn messy inputs into
-                  dependable, reusable knowledge. She lives in your local
-                  workspace, ready to organize, extract, and format information
-                  whenever you need it.
-                </p>
+                  <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+                    Mia helps your agents turn their work into reusable
+                    documentation. She converts files, links, notes, and agent
+                    output into clean Markdown, extracts the useful details,
+                    adds structure, and prepares project knowledge for humans
+                    and AI agents to reuse.
+                  </p>
 
-                <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-slate-100 p-3 flex items-center justify-center shrink-0">
-                    <img
+                  <div className="flex items-center gap-6">
+                    <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-slate-100 p-3 flex items-center justify-center shrink-0">
+                      <img
                       src={assetPath('logo_square.png')}
                       alt="Mia Badge"
                       className="w-full h-full object-contain" />
                     
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">
-                      Built for humans.
-                    </p>
-                    <p className="text-sm font-medium text-slate-900">
-                      Designed for agents.
-                    </p>
-                    <p className="text-sm font-medium text-slate-500 mt-1">
-                      Loved by engineers.
-                    </p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-slate-900">
+                        Built for humans.
+                      </p>
+                      <p className="text-sm font-medium text-slate-900">
+                        Designed for agents.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
