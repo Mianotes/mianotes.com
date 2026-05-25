@@ -29,9 +29,9 @@ export function MeetMia() {
     'Rewrite for clarity, improve structure, clean up formatting, and keep the original context close.'
   },
   {
-    title: 'Keep knowledge useful',
+    title: 'Publish notes as static HTML',
     copy:
-    'Organise project memory into durable notes that stay readable for humans and useful for agents.'
+    'Turn selected notes into a static site that is easy to share with anyone, online or offline.'
   }];
 
   return (
