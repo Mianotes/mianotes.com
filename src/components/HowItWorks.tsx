@@ -3,32 +3,27 @@ import {
   FolderInput,
   FilePenLine,
   ClipboardCheck,
-  ArrowRight,
-  ArrowDown
+  ArrowRight
 } from 'lucide-react';
-import { assetPath } from '../assets';
 export function HowItWorks() {
   const steps = [
   {
     icon: <FolderInput className="w-8 h-8 text-brand-purple" />,
     title: 'Capture',
     description:
-    'Add files, links, notes, images, audio, or agent output from your project.',
-    image: assetPath('screens/screen_dashboard.png')
+    'Add files, links, notes, images, audio, or agent output from your project.'
   },
   {
     icon: <FilePenLine className="w-8 h-8 text-brand-pink" />,
     title: 'Document',
     description:
-    'Agents search, create, edit, and update notes through the API and MCP server, with Mia helping structure the knowledge as they work.',
-    image: assetPath('screens/screen_console.png')
+    'Agents search, create, edit, and update notes through the API and MCP server, with Mia helping structure the knowledge as they work.'
   },
   {
     icon: <ClipboardCheck className="w-8 h-8 text-brand-blue" />,
     title: 'Review',
     description:
-    'Humans use the web app to review what agents are documenting, improve the final notes, and publish the result.',
-    image: assetPath('screens/screen_editor.png')
+    'Humans use the web app to review what agents are documenting, improve the final notes, and publish the result.'
   }];
 
   return (
@@ -68,50 +63,6 @@ export function HowItWorks() {
                   {step.description}
                 </p>
               </div>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-24 border-t border-slate-200/70 pt-20">
-          <div className="mb-12 max-w-3xl">
-            <h3 className="text-3xl font-bold text-slate-900 tracking-tight">
-              From project material to reusable knowledge
-            </h3>
-            <p className="mt-4 text-lg leading-relaxed text-slate-600">
-              The same workflow, shown as a simple handoff between people,
-              agents, and Mia.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {steps.map((step, index) =>
-            <React.Fragment key={step.title}>
-                <div className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-[auto_1fr_320px] lg:items-center lg:gap-8">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-xl font-bold text-white">
-                    {index + 1}
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold text-slate-900">
-                      {step.title}
-                    </h4>
-                    <p className="mt-3 text-slate-600 leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                  <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
-                    <img
-                    src={step.image}
-                    alt=""
-                    className="aspect-[16/10] h-full w-full object-contain object-top" />
-                  
-                  </div>
-                </div>
-                {index < steps.length - 1 &&
-              <div className="flex justify-center text-slate-300">
-                    <ArrowDown className="h-7 w-7" />
-                  </div>
-              }
-              </React.Fragment>
             )}
           </div>
         </div>
