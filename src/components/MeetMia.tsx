@@ -24,9 +24,9 @@ export function MeetMia() {
     'Extract the decisions, action items, names, dates, and details that matter from messy notes and documents.'
   },
   {
-    title: 'Improve every note',
+    title: 'Edit documents beautifully',
     copy:
-    'Rewrite for clarity, improve structure, clean up formatting, and keep the original context close.'
+    'Use the web app’s advanced rich text editor to refine Markdown documents with a writing experience that feels fast, polished, and genuinely enjoyable.'
   },
   {
     title: 'Publish notes as static HTML',
