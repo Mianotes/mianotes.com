@@ -6,6 +6,7 @@ import {
   ClaudeIcon,
   OpenClawIcon,
   VSCodeIcon,
+  CursorIcon,
   SlackIcon,
   MCPIcon } from
 './BrandIcons';
@@ -29,6 +30,10 @@ const integrations = [
 {
   name: 'VS Code',
   Icon: VSCodeIcon
+},
+{
+  name: 'Cursor',
+  Icon: CursorIcon
 },
 {
   name: 'Slack',
