@@ -54,16 +54,8 @@ export function MeetMia() {
                 <img
                   src={assetPath('mia_document_agent.png')}
                   alt="Mia, your documentation agent"
-                  className="h-full w-full object-contain" />
+                  className="h-full w-full object-cover" />
                 
-              </div>
-
-              {/* status badge floating */}
-              <div className="absolute top-6 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-md z-10">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
-                  Mia is online
-                </span>
               </div>
             </div>
 
