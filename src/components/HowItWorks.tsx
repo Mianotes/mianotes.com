@@ -1,24 +1,24 @@
 import React from 'react';
-import { UploadCloud, BrainCircuit, Share2, ArrowRight } from 'lucide-react';
+import { FolderInput, FilePenLine, ClipboardCheck, ArrowRight } from 'lucide-react';
 export function HowItWorks() {
   const steps = [
   {
-    icon: <UploadCloud className="w-8 h-8 text-brand-purple" />,
+    icon: <FolderInput className="w-8 h-8 text-brand-purple" />,
     title: 'Capture',
     description:
-    'Start with a folder, repo, file, link, note, image, or recording. Mianotes turns project material into clean Markdown notes you can keep, search, and reuse.'
+    'Add files, links, notes, images, audio, or agent output from your project.'
   },
   {
-    icon: <BrainCircuit className="w-8 h-8 text-brand-pink" />,
+    icon: <FilePenLine className="w-8 h-8 text-brand-pink" />,
     title: 'Document',
     description:
-    'Agents can search, add, edit, and update notes through the API and MCP server. They can also work with Mia to extract useful information, add structure, and keep project context up to date.'
+    'Agents search, create, edit, and update notes through the API and MCP server, with Mia helping structure the knowledge as they work.'
   },
   {
-    icon: <Share2 className="w-8 h-8 text-brand-blue" />,
+    icon: <ClipboardCheck className="w-8 h-8 text-brand-blue" />,
     title: 'Review',
     description:
-    'Humans use the web app to see what their agents are documenting, work with Mia, edit the final notes, and publish the result.'
+    'Humans use the web app to review what agents are documenting, improve the final notes, and publish the result.'
   }];
 
   return (
@@ -29,8 +29,7 @@ export function HowItWorks() {
             How it works
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            A simple pipeline to turn messy inputs into dependable, reusable
-            knowledge.
+            Turn any folder or repo into a knowledge hub.
           </p>
         </div>
 
