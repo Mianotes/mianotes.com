@@ -50,7 +50,7 @@ export function MeetMia() {
               <div className="absolute bottom-16 right-6 w-1.5 h-1.5 rounded-full bg-brand-purple/30"></div>
 
               {/* Mia visual */}
-              <div className="relative z-10 aspect-[2429/759] overflow-hidden">
+              <div className="relative z-10 aspect-[1600/420] overflow-hidden">
                 <img
                   src={assetPath('mia_document_agent.png')}
                   alt="Mia, your documentation agent"
