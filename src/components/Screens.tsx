@@ -54,7 +54,7 @@ export function Screens() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-4xl">
           <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            Four screens. One shared knowledge hub.
+            For agents
           </h2>
           <p className="text-xl text-slate-700 leading-relaxed">
             Your agents are already creating useful context. Mianotes makes it
