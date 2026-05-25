@@ -2,8 +2,6 @@
 
 This is the React site for [Mianotes](https://github.com/Mianotes), built with Vite, React, TypeScript, and Tailwind CSS.
 
-The site is intentionally lightweight: most of the work happens in reusable React components, with styling handled through Tailwind utility classes and a small set of shared design patterns.
-
 ## Requirements
 
 - Node.js 20 or newer
