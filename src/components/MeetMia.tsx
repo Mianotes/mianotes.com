@@ -40,17 +40,9 @@ export function MeetMia() {
         <div className="bg-slate-50 rounded-3xl border border-slate-200/60 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1">
             {/* Column 1: Mia Character */}
-            <div className="relative bg-gradient-to-b from-purple-50 via-white to-purple-50 overflow-hidden border-b border-slate-200/60">
-              {/* soft glow */}
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-purple-200/50 to-transparent blur-2xl pointer-events-none"></div>
-              {/* sparkle dots */}
-              <div className="absolute top-12 left-6 w-1.5 h-1.5 rounded-full bg-brand-purple/40"></div>
-              <div className="absolute top-24 right-8 w-1 h-1 rounded-full bg-brand-pink/50"></div>
-              <div className="absolute bottom-32 left-10 w-1 h-1 rounded-full bg-brand-blue/50"></div>
-              <div className="absolute bottom-16 right-6 w-1.5 h-1.5 rounded-full bg-brand-purple/30"></div>
-
+            <div className="overflow-hidden bg-[#efefef]">
               {/* Mia visual */}
-              <div className="relative z-10 aspect-[1600/420] overflow-hidden">
+              <div className="aspect-[1600/420] overflow-hidden">
                 <img
                   src={assetPath('mia_document_agent.png')}
                   alt="Mia, your documentation agent"
