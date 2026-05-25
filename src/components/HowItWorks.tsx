@@ -6,19 +6,19 @@ export function HowItWorks() {
     icon: <UploadCloud className="w-8 h-8 text-brand-purple" />,
     title: 'Capture',
     description:
-    'Upload, paste, link, or record — Mianotes captures it all from any source.'
+    'Start with a folder, repo, file, link, note, image, or recording. Mianotes turns project material into clean Markdown notes you can keep, search, and reuse.'
   },
   {
     icon: <BrainCircuit className="w-8 h-8 text-brand-pink" />,
-    title: 'Understand',
+    title: 'Document',
     description:
-    'Mia structures the context so your agents can reason, act, and document.'
+    'Agents can search, add, edit, and update notes through the API and MCP server. They can also work with Mia to extract useful information, add structure, and keep project context up to date.'
   },
   {
     icon: <Share2 className="w-8 h-8 text-brand-blue" />,
-    title: 'Reuse',
+    title: 'Review',
     description:
-    'Search, edit, publish, or expose through the API & MCP server.'
+    'Humans use the web app to see what their agents are documenting, work with Mia, edit the final notes, and publish the result.'
   }];
 
   return (
