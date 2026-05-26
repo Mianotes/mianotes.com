@@ -1,5 +1,13 @@
 import React from 'react';
-import { Code, Bot, GraduationCap, Users, Search, Home } from 'lucide-react';
+import {
+  Bot,
+  Code2,
+  GraduationCap,
+  Home,
+  Lightbulb,
+  Microscope,
+  Users
+} from 'lucide-react';
 export function UseCases() {
   const cases = [
   {
@@ -9,19 +17,19 @@ export function UseCases() {
     'Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
   },
   {
-    icon: <Code className="w-6 h-6" />,
+    icon: <Lightbulb className="w-6 h-6" />,
     title: 'Entrepreneurs',
     description:
     'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
   },
   {
-    icon: <Search className="w-6 h-6" />,
+    icon: <Microscope className="w-6 h-6" />,
     title: 'Researchers',
     description:
     'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
   },
   {
-    icon: <Code className="w-6 h-6" />,
+    icon: <Code2 className="w-6 h-6" />,
     title: 'Developers',
     description:
     'Use Mianotes as a local knowledge hub for project notes, implementation details, decisions, debugging findings, and agent output. Document and publish.'
