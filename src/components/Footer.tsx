@@ -18,8 +18,15 @@ export function Footer() {
             <a href="#" className="hover:text-brand-purple transition-colors">
               MCP Server
             </a>
-            <a href="#" className="hover:text-brand-purple transition-colors">
-              Privacy
+            <a
+              href="https://github.com/Mianotes/mianotes-web-service/issues"
+              className="hover:text-brand-purple transition-colors">
+              Report a bug
+            </a>
+            <a
+              href="https://raw.githubusercontent.com/Mianotes/mianotes-web-service/refs/heads/main/LICENCE"
+              className="hover:text-brand-purple transition-colors">
+              GPL-3.0 License
             </a>
           </div>
 
