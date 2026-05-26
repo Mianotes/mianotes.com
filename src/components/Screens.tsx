@@ -10,25 +10,25 @@ type Screen = {
 };
 const screens: Screen[] = [
 {
-  title: 'Provide context',
+  title: 'Capture',
   description:
   'Give agents the files, links, screenshots, notes, and background they need to understand the task.',
   image: assetPath('screens/screen_dashboard.png')
 },
 {
-  title: 'Save information',
+  title: 'Organise',
   description:
   'Agents save decisions, implementation notes, summaries, source links, and project context as they work.',
   image: assetPath('screens/screen_console.png')
 },
 {
-  title: 'Review the work',
+  title: 'Review',
   description:
   'Use the dashboard and editor to read, improve, tag, and organise what your agents documented.',
   image: assetPath('screens/screen_editor.png')
 },
 {
-  title: 'Publish the result',
+  title: 'Publish',
   description:
   'Turn selected notes into a clean static site you can share with your team, clients, or future agents.',
   image: assetPath('screens/screen_publish.png')
@@ -50,13 +50,21 @@ export function Screens() {
     };
   }, [active]);
   return (
-    <section className="pt-0 pb-24 bg-slate-50">
+    <section id="product" className="py-24 bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">What Mianotes looks like in practice</h2>
+          <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
+            <p>
+              Mianotes can extract key points from documents, turn links into notes, transcribe and summarise audio files, and convert YouTube videos and web pages into clean Markdown you can search, organise, and edit in a rich text editor.
+            </p>
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {screens.map((screen) =>
           <div
             key={screen.title}
-            className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             
               {/* Screenshot - clickable */}
               <button
@@ -87,6 +95,11 @@ export function Screens() {
               </div>
             </div>
           )}
+        </div>
+        <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
+          <p>
+            The web app was designed around real content workflows, from capturing information to organising notes, reviewing changes, and publishing selected knowledge. The UI and UX are shaped by 20 years of experience building content management systems for journalists, editors, and publishing teams.
+          </p>
         </div>
       </div>
 

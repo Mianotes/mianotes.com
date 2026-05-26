@@ -35,7 +35,7 @@ export function MeetMia() {
   }];
 
   return (
-    <section id="agents" className="py-24 bg-white overflow-hidden">
+    <section id="meet-mia" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-50 rounded-3xl border border-slate-200/60 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1">
@@ -77,10 +77,10 @@ export function MeetMia() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-slate-900">
-                        Built for humans.
+                        Mianotes Connect
                       </p>
                       <p className="text-sm font-medium text-slate-900">
-                        Designed for agents.
+                        Coming soon for iOS and Android
                       </p>
                     </div>
                   </div>

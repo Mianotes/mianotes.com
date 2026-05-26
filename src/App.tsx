@@ -6,7 +6,6 @@ import { Screens } from './components/Screens';
 import { HowItWorks } from './components/HowItWorks';
 import { MeetMia } from './components/MeetMia';
 import { UseCases } from './components/UseCases';
-import { CoreConcepts } from './components/CoreConcepts';
 import { CodeShowcase } from './components/CodeShowcase';
 import { Footer } from './components/Footer';
 export function App() {
@@ -16,11 +15,10 @@ export function App() {
       <main className="flex-grow">
         <Hero />
         <WhyMianotes />
-        <Screens />
         <HowItWorks />
-        <MeetMia />
+        <Screens />
         <UseCases />
-        <CoreConcepts />
+        <MeetMia />
         <CodeShowcase />
       </main>
       <Footer />

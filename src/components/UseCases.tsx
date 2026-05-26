@@ -3,40 +3,46 @@ import { Code, Bot, GraduationCap, Users, Search, Home } from 'lucide-react';
 export function UseCases() {
   const cases = [
   {
-    icon: <Code className="w-6 h-6" />,
-    title: 'Developers',
-    description:
-    'Let AI agents document decisions, changes, implementation notes, and project context while they work.'
-  },
-  {
-    icon: <Bot className="w-6 h-6" />,
-    title: 'AI Agents & Tools',
-    description:
-    'Give agents and tools a knowledge base they can search, update, and maintain as they work.'
-  },
-  {
-    icon: <GraduationCap className="w-6 h-6" />,
-    title: 'Students',
-    description:
-    'Upload notes, book pages, or slides, then ask Mia to turn them into clean Markdown notes.'
-  },
-  {
     icon: <Users className="w-6 h-6" />,
     title: 'Small Teams',
     description:
-    'Keep shared context, meeting notes, decisions, and agent output in one local-first workspace.'
+    'Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
+  },
+  {
+    icon: <Code className="w-6 h-6" />,
+    title: 'Entrepreneurs',
+    description:
+    'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
   },
   {
     icon: <Search className="w-6 h-6" />,
     title: 'Researchers',
     description:
-    'Keep research notes, links, papers, and summaries tagged and organised in one searchable hub.'
+    'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
+  },
+  {
+    icon: <Code className="w-6 h-6" />,
+    title: 'Developers',
+    description:
+    'Use Mianotes as a local knowledge hub for project notes, implementation details, decisions, debugging findings, and agent output. Document and publish.'
+  },
+  {
+    icon: <GraduationCap className="w-6 h-6" />,
+    title: 'Students',
+    description:
+    'Upload notes, book pages, slides, lectures, videos, or homework, then ask Mia to turn them into clean Markdown notes.'
+  },
+  {
+    icon: <Bot className="w-6 h-6" />,
+    title: 'AI agents and tools',
+    description:
+    'Give agents a knowledge base they can search, update, and maintain through the API and MCP server.'
   },
   {
     icon: <Home className="w-6 h-6" />,
-    title: 'Families',
+    title: 'Families and personal projects',
     description:
-    'Save homework, receipts, trip plans, and everyday notes, then ask Mia to summarise them.'
+    'Run Mianotes on your Mac mini to save homework, book references, trip plans, and everyday notes, then ask Mia to summarise or organise them.'
   }];
 
   return (
@@ -47,8 +53,7 @@ export function UseCases() {
             Who is Mianotes for?
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Mianotes is useful whenever humans and agents need a shared,
-            searchable, local knowledge base.
+            Mianotes is for individuals and small groups who collect useful information and need a better way to organise, search, share, and reuse it.
           </p>
         </div>
 
