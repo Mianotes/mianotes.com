@@ -98,7 +98,7 @@ export function Screens() {
         </div>
         <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
           <p>
-            The web app was designed around real content workflows, from capturing information to organising notes, reviewing changes, and publishing selected knowledge. The UI and UX are shaped by 20 years of experience building content management systems for journalists, editors, and publishing teams.
+            The web app was designed around real content workflows, from capturing information to organising notes, reviewing changes, and publishing selected knowledge. The UI and UX are shaped by many years of experience building content management systems for journalists, editors, and publishing teams.
           </p>
         </div>
       </div>
