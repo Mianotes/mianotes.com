@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { assetPath } from '../assets';
+import { LogoMark } from './Logo';
 export function MeetMia() {
   const capabilities = [
   {
@@ -69,11 +70,7 @@ export function MeetMia() {
 
                   <div className="flex items-center gap-6">
                     <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-slate-100 p-3 flex items-center justify-center shrink-0">
-                      <img
-                      src={assetPath('logo_square.png')}
-                      alt="Mia Badge"
-                      className="w-full h-full object-contain" />
-                    
+                      <LogoMark className="h-full w-full" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-slate-900">

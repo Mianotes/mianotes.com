@@ -25,7 +25,7 @@ export function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Mianotes"
               className="text-slate-400 hover:text-slate-900 transition-colors">
               
               <span className="sr-only">GitHub</span>

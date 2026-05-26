@@ -25,10 +25,10 @@ export function Navbar() {
               How it works
             </a>
             <a
-              href="#product"
+              href="#app"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
-              Product
+              App
             </a>
             <a
               href="#use-cases"
@@ -53,7 +53,7 @@ export function Navbar() {
           {/* Right Actions */}
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Mianotes"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-500 hover:text-slate-900 transition-colors hidden sm:block">
