@@ -305,11 +305,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
-  overflow-x: hidden;
 }
 body {
   @apply bg-slate-50 text-slate-900 antialiased selection:bg-brand-purple selection:text-white;
-  overflow-x: hidden;
 }
 
 .how-section {

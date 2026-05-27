@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { assetPath } from '../assets';
+import { LogoMark } from './Logo';
 
 type Screen = {
   title: string;
@@ -12,25 +13,25 @@ const screens: Screen[] = [
 {
   title: 'Capture',
   description:
-  'Give agents the files, links, screenshots, notes, and background they need to understand the task.',
+  'Add files, links, screenshots, recordings, notes, research, and project context.',
   image: assetPath('screens/screen_dashboard.png')
 },
 {
-  title: 'Organise',
+  title: 'Console',
   description:
-  'Agents save decisions, implementation notes, summaries, source links, and project context as they work.',
+  'Track who is adding context and what sources Mia is processing.',
   image: assetPath('screens/screen_console.png')
 },
 {
-  title: 'Review',
+  title: 'Edit',
   description:
-  'Use the dashboard and editor to read, improve, tag, and organise what your agents documented.',
+  'Refine Markdown notes in the rich text editor, then ask Mia to improve them with a local or cloud LLM.',
   image: assetPath('screens/screen_editor.png')
 },
 {
   title: 'Publish',
   description:
-  'Turn selected notes into a clean static site you can share with your team, clients, or future agents.',
+  'Share selected notes as a static site for your team, clients, or anyone following the project.',
   image: assetPath('screens/screen_publish.png')
 }];
 
@@ -53,7 +54,10 @@ export function Screens() {
     <section id="app" className="py-[86px] bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Workspace</h2>
+          <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <LogoMark className="h-[48px] w-[48px] shrink-0" />
+            <span>The Mianotes web app</span>
+          </h2>
           <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
             <p>
               This is where you add sources, review generated notes, organise project knowledge, and decide what is ready to share.

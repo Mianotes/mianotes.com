@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogoMark } from './Logo';
 
 type IconName =
   | 'chat'
@@ -316,8 +317,9 @@ export function HowItWorks() {
     <section id="how-it-works" className="how-section py-[86px] bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            How it works
+          <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <LogoMark className="h-[48px] w-[48px] shrink-0" />
+            <span>How it works</span>
           </h2>
           <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
             <p>

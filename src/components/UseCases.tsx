@@ -8,6 +8,7 @@ import {
   Microscope,
   Users
 } from 'lucide-react';
+import { LogoMark } from './Logo';
 export function UseCases() {
   const cases = [
   {
@@ -51,8 +52,9 @@ export function UseCases() {
     <section id="use-cases" className="py-[86px] bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Who is Mianotes for?
+          <h2 className="flex items-center gap-3 text-3xl font-bold text-slate-900 mb-4">
+            <LogoMark className="h-[48px] w-[48px] shrink-0" />
+            <span>Who is Mianotes for?</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl">
             Mianotes is for individuals and small groups who collect useful information and need a better way to organise, search, share, and reuse it.

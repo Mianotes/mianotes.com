@@ -28,7 +28,7 @@ export function Navbar() {
               href="#app"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
-              Workspace
+              Web app
             </a>
             <a
               href="#use-cases"

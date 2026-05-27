@@ -91,7 +91,7 @@ export function Hero() {
               </button>
             </div>
             <p className="pt-5 text-sm text-slate-500">
-              Powered by Microsoft MarkItDown and Ollama.
+              Built on top of the open-source Microsoft MarkItDown and Ollama engines.
             </p>
           </div>
 

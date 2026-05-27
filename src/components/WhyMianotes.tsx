@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogoMark } from './Logo';
 
 type SourceIcon = 'file' | 'link' | 'mic' | 'video' | 'image' | 'chat';
 
@@ -185,8 +186,9 @@ export function WhyMianotes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="why-mianotes-layout">
           <div className="why-mianotes-copy">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Why Mianotes exists
+            <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+              <LogoMark className="h-[48px] w-[48px] shrink-0" />
+              <span>Why Mianotes exists</span>
             </h2>
             <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
               <p>Most project knowledge is a mess. You start with a document, then the work spreads across folders, apps, recordings, chat, email, links, PDFs, spreadsheets, screenshots, and LLM messages.</p>
