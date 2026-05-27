@@ -22,27 +22,27 @@ export function MeetMia() {
   {
     title: 'Summarise long material',
     copy:
-    'Extract the decisions, action items, names, dates, and details that matter from messy notes and documents.'
+    'Extract decisions, action items, names, dates, and useful details from messy notes and documents.'
   },
   {
-    title: 'Edit documents beautifully',
+    title: 'Edit notes in the web app',
     copy:
-    'Use the web app’s advanced rich text editor to refine Markdown documents with a writing experience that feels fast, polished, and genuinely enjoyable.'
+    'Use the rich text editor to review, clean up, and refine Markdown notes without leaving the browser.'
   },
   {
     title: 'Publish notes as static HTML',
     copy:
-    'Turn selected notes into a static site that is easy to share with anyone, online or offline.'
+    'Turn selected notes into a static site you can share online, or keep offline.'
   }];
 
   return (
-    <section id="meet-mia" className="py-24 bg-white overflow-hidden">
+    <section id="meet-mia" className="py-[86px] bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-50 rounded-3xl border border-slate-200/60 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1">
-            <div className="grid grid-cols-1 border-b border-slate-200/60 lg:grid-cols-12">
+            <div className="meet-mia-intro grid grid-cols-1 border-b border-slate-200/60 md:grid-cols-12">
               {/* Column 1: Mia Character */}
-              <div className="relative min-h-[360px] overflow-hidden bg-[#efefef] lg:col-span-3">
+              <div className="meet-mia-image relative min-h-[360px] overflow-hidden bg-[#efefef] md:col-span-4 lg:col-span-3">
                 <img
                 src={assetPath('mia_document_agent.jpg')}
                 alt="Mia, your documentation agent"
@@ -51,7 +51,7 @@ export function MeetMia() {
               </div>
 
               {/* Column 2: Intro */}
-              <div className="p-10 lg:col-span-9 lg:p-12 flex flex-col justify-center relative">
+              <div className="meet-mia-copy p-10 md:col-span-8 lg:col-span-9 lg:p-12 flex flex-col justify-center relative">
                 <div className="relative z-10">
                   <h2 className="text-4xl font-bold text-slate-900 mb-4">
                     Meet <span className="text-brand-purple">Mia</span>
@@ -88,7 +88,7 @@ export function MeetMia() {
             {/* Column 3: Capabilities */}
             <div className="p-10 lg:p-12 bg-white flex flex-col justify-center">
               <h4 className="text-lg font-semibold text-slate-900 mb-8">
-                What Mia can do for you:
+                What Mia helps you do
               </h4>
               <ul className="grid gap-4 md:grid-cols-2">
                 {capabilities.map((item, index) =>

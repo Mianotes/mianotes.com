@@ -29,10 +29,10 @@ export function UseCases() {
     'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
   },
   {
-    icon: <Code2 className="w-6 h-6" />,
+    icon: <Bot className="w-6 h-6" />,
     title: 'Developers',
     description:
-    'Use Mianotes as a local knowledge hub for project notes, implementation details, decisions, debugging findings, and agent output. Document and publish.'
+    'Give agents a knowledge base they can search, update, and maintain through the API and MCP server.'
   },
   {
     icon: <GraduationCap className="w-6 h-6" />,
@@ -41,26 +41,20 @@ export function UseCases() {
     'Upload notes, book pages, slides, lectures, videos, or homework, then ask Mia to turn them into clean Markdown notes.'
   },
   {
-    icon: <Bot className="w-6 h-6" />,
-    title: 'AI agents and tools',
-    description:
-    'Give agents a knowledge base they can search, update, and maintain through the API and MCP server.'
-  },
-  {
     icon: <Home className="w-6 h-6" />,
-    title: 'Families and personal projects',
+    title: 'Families',
     description:
     'Run Mianotes on your Mac mini to save homework, book references, trip plans, and everyday notes, then ask Mia to summarise or organise them.'
   }];
 
   return (
-    <section id="use-cases" className="py-24 bg-slate-50">
+    <section id="use-cases" className="py-[86px] bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
             Who is Mianotes for?
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl">
             Mianotes is for individuals and small groups who collect useful information and need a better way to organise, search, share, and reuse it.
           </p>
         </div>

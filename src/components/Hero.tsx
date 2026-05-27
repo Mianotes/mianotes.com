@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, BookOpen } from 'lucide-react';
+import { Download, BookOpen, Code2, Home, Shield } from 'lucide-react';
 import {
   OllamaIcon,
   OpenAIIcon,
@@ -47,14 +47,27 @@ const integrations = [
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden bg-slate-50 pt-16 pb-24 lg:pt-24 lg:pb-32">
+    <div className="hero-pastel-bg relative overflow-hidden pt-16 pb-24 lg:pt-24 lg:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium text-brand-purple bg-purple-100 mb-8 border border-purple-200">
-            Local-first · Private · Open source · For humans and agents
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full px-3 py-1 text-sm font-medium text-brand-purple bg-purple-100 mb-8 border border-purple-200">
+            <span className="inline-flex items-center gap-1.5">
+              <Home className="h-3.5 w-3.5" />
+              Local-first
+            </span>
+            <span aria-hidden="true" className="text-brand-purple/45">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <Shield className="h-3.5 w-3.5" />
+              Private
+            </span>
+            <span aria-hidden="true" className="text-brand-purple/45">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <Code2 className="h-3.5 w-3.5" />
+              Open source
+            </span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+          <h1 className="text-[2.6rem] md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
             Turn any folder into a<br className="hidden md:block" />
             searchable <span className="text-gradient">knowledge hub</span>.
           </h1>
@@ -83,7 +96,7 @@ export function Hero() {
           </div>
 
           {/* Trust Row */}
-          <div className="pt-8 border-t border-slate-200/60">
+          <div className="pt-8">
             <p className="text-sm font-medium text-slate-500 mb-6 uppercase tracking-wider">
               Works seamlessly with
             </p>
@@ -101,12 +114,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-300/20 blur-3xl"></div>
-        <div className="absolute top-[20%] right-[-10%] w-[30%] h-[50%] rounded-full bg-blue-300/20 blur-3xl"></div>
-      </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-72 bg-gradient-to-b from-white/0 via-white/85 to-white" />
     </div>);
 
 }

@@ -50,13 +50,13 @@ export function Screens() {
     };
   }, [active]);
   return (
-    <section id="product" className="py-24 bg-white bg-slate-50 border-t border-slate-200/60">
+    <section id="app" className="py-[86px] bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">What Mianotes looks like in practice</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Workspace</h2>
           <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
             <p>
-              Mianotes can extract key points from documents, turn links into notes, transcribe and summarise audio files, and convert YouTube videos and web pages into clean Markdown you can search, organise, and edit in a rich text editor.
+              This is where you add sources, review generated notes, organise project knowledge, and decide what is ready to share.
             </p>
           </div>
         </div>

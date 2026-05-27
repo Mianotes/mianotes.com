@@ -56,7 +56,7 @@ export function CodeShowcase() {
   };
 
   return (
-    <section id="docs" className="py-24 bg-white border-b border-slate-200">
+    <section id="docs" className="py-[86px] bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">

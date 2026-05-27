@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <Logo markClassName="h-8 w-8" textClassName="text-xl" />
 
-          <div className="flex items-center gap-8 text-sm font-medium text-slate-500">
+          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-4 text-center text-sm font-medium text-slate-500 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-3">
             <a href="#" className="hover:text-brand-purple transition-colors">
               Documentation
             </a>
