@@ -120,22 +120,22 @@ function PreviewSourceIcon({ icon, x, y }: { icon: SourceIcon; x: number; y: num
 function MarkdownConversionIllustration() {
   return (
     <div className="why-conversion" aria-label="Mia turns project material into tagged Markdown notes">
-      <svg className="why-preview-svg" viewBox="0 0 540 820" role="img" aria-hidden="true">
-        <rect x="24" y="24" width="492" height="772" rx="22" fill="#ffffff" stroke="#d9e2ef" strokeWidth="1.5" />
+      <svg className="why-preview-svg" viewBox="0 0 530 900" role="img" aria-hidden="true">
+        <rect x="24" y="24" width="482" height="852" rx="22" fill="#ffffff" stroke="#d9e2ef" strokeWidth="1.5" />
         <circle cx="60" cy="62" r="7.5" fill="#ff575d" />
         <circle cx="90" cy="62" r="7.5" fill="#ffb31a" />
         <circle cx="120" cy="62" r="7.5" fill="#37d36f" />
-        <line x1="48" y1="98" x2="492" y2="98" stroke="#e3eaf4" strokeWidth="1.4" />
+        <line x1="48" y1="98" x2="482" y2="98" stroke="#e3eaf4" strokeWidth="1.4" />
 
         {previewNotes.map((note, index) => {
-          const y = 126 + index * 112;
+          const y = 126 + index * 124;
           return (
             <g key={note.title}>
               <rect
                 x="48"
                 y={y}
-                width="444"
-                height="96"
+                width="434"
+                height="108"
                 rx="15"
                 fill="#ffffff"
                 stroke="#e6edf6"
@@ -154,7 +154,7 @@ function MarkdownConversionIllustration() {
                   <g key={tag.label}>
                     <rect
                       x={tagX}
-                      y={y + 64}
+                      y={y + 72}
                       width={tag.width}
                       height="24"
                       rx="7"
@@ -162,7 +162,7 @@ function MarkdownConversionIllustration() {
                     />
                     <text
                       x={tagX + tag.width / 2}
-                      y={y + 81}
+                      y={y + 89}
                       textAnchor="middle"
                       className={tag.tone === 'purple' ? 'why-preview-tag-text-purple' : 'why-preview-tag-text-slate'}
                     >

@@ -63,9 +63,9 @@ export function UseCases() {
           {cases.map((item, index) =>
           <div
             key={index}
-            className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+            className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm transition-all duration-300 group lg:hover:shadow-md lg:hover:-translate-y-1">
             
-              <div className="w-12 h-12 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center mb-6 group-hover:bg-brand-purple group-hover:text-white transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center mb-6 transition-colors lg:group-hover:bg-brand-purple lg:group-hover:text-white">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">

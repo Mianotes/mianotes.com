@@ -149,10 +149,7 @@ export function Screens() {
               onClick={() => setActive(null)}
               className="fixed right-5 top-5 z-10 inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white text-sm font-semibold text-slate-950 shadow-xl transition-colors hover:bg-slate-100"
               aria-label="Close">
-              
-                <span aria-hidden="true">[</span>
                 <X className="mx-0.5 h-4 w-4" />
-                <span aria-hidden="true">]</span>
               </button>
 
               {/* Large screenshot */}

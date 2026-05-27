@@ -17,7 +17,7 @@ export function MeetMia() {
   {
     title: 'Process files offline',
     copy:
-    'Use a local LLM to read private files on your own machine, without sending them to a cloud service.'
+    'Convert private files on your own machine and process them with a local LLM, without sending them to a cloud service.'
   },
   {
     title: 'Summarise long material',

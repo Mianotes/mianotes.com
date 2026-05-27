@@ -434,8 +434,8 @@ body {
 .why-preview-title {
   fill: #0f172a;
   font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .why-preview-subtitle {
