@@ -470,7 +470,10 @@ body {
   }
 
   .why-conversion {
+    max-width: 420px;
     margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -481,6 +484,10 @@ body {
 
   .why-preview-title {
     font-size: 18px;
+  }
+
+  .why-conversion {
+    max-width: 100%;
   }
 }
 

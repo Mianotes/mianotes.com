@@ -2,15 +2,30 @@ import React from 'react';
 import { Github, Download } from 'lucide-react';
 import { jumpToDownload } from '../jumpToDownload';
 import { Logo } from './Logo';
+
+function jumpToTop() {
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+
+  root.style.scrollBehavior = 'auto';
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  window.history.pushState(null, '', window.location.pathname);
+  root.style.scrollBehavior = previousScrollBehavior;
+}
+
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <nav className="sticky top-0 z-50 w-full bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+          <button
+            type="button"
+            onClick={jumpToTop}
+            className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+            aria-label="Go to top">
             <Logo markClassName="h-9 w-9" textClassName="text-2xl" />
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

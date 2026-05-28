@@ -11,28 +11,40 @@ type Screen = {
 };
 const screens: Screen[] = [
 {
-  title: 'Capture',
+  title: 'Organise',
   description:
-  'Add files, links, screenshots, recordings, notes, research, and project context.',
-  image: assetPath('screens/screen_dashboard.png')
-},
-{
-  title: 'Console',
-  description:
-  'Track who is adding context and what sources Mia is processing.',
-  image: assetPath('screens/screen_console.png')
+  'Turn any folder into a small content hub for your project. Browse notes by folder, tag, source, or person, and keep the knowledge easy to search and update.',
+  image: assetPath('screens/screen_organise.jpg')
 },
 {
   title: 'Edit',
   description:
-  'Refine Markdown notes in the rich text editor, then ask Mia to improve them with a local or cloud LLM.',
-  image: assetPath('screens/screen_editor.png')
+  'Work on Markdown notes in the rich text editor, then ask Mia to summarise, restructure, or improve them with a local or cloud LLM.',
+  image: assetPath('screens/screen_editor.jpg')
+},
+{
+  title: 'Capture',
+  description:
+  'Convert files, links, images, audio, and text into Markdown notes. People can read, edit, and share them, while AI agents can maintain them through APIs and MCP.',
+  image: assetPath('screens/screen_capture.jpg')
+},
+{
+  title: 'Console',
+  description:
+  'Watch Mianotes work in real time. See who added what, what Mia is processing, and where something needs attention.',
+  image: assetPath('screens/screen_console.jpg')
+},
+{
+  title: 'Users',
+  description:
+  'Give each folder its own team. Add users, assign admins, and keep project knowledge managed by the people working on it.',
+  image: assetPath('screens/screen_users.jpg')
 },
 {
   title: 'Publish',
   description:
   'Share selected notes as a static site for your team, clients, or anyone following the project.',
-  image: assetPath('screens/screen_publish.png')
+  image: assetPath('screens/screen_publish.jpg')
 }];
 
 export function Screens() {
