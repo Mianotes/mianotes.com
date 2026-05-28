@@ -68,8 +68,31 @@ export function Hero() {
           </div>
 
           <h1 className="text-[2.6rem] md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-            Turn any folder into a<br className="hidden md:block" />
-            searchable <span className="text-gradient">knowledge hub</span>.
+            Turn any{' '}
+            <span className="hero-folder-word text-gradient">
+              folder
+              <svg
+                className="hero-folder-pointer"
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path
+                  d="M12.2 5.3C12.2 4.2 13.1 3.3 14.2 3.3C15.3 3.3 16.2 4.2 16.2 5.3V16.4L18 14.9C18.8 14.2 20.1 14.3 20.8 15.1L21.7 16.2L23 15.2C23.8 14.6 25.1 14.7 25.8 15.5L27.4 17.4C28 18.1 28.3 19 28.2 20L27.7 25.1C27.5 27.9 25.1 30.1 22.3 30.1H17.3C15.5 30.1 13.8 29.2 12.7 27.8L6.3 19.5C5.6 18.6 5.8 17.4 6.7 16.7C7.5 16.1 8.6 16.2 9.3 16.9L12.2 19.9V5.3Z"
+                  fill="white"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinejoin="round" />
+                <path
+                  d="M16.2 16.4V21.6M20.8 15.1L23.2 18M25.8 15.5L27.4 17.4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round" />
+              </svg>
+            </span>{' '}
+            into a <br className="hidden md:block" />searchable knowledge hub.
           </h1>
 
           <p className="mt-4 text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">

@@ -27,6 +27,95 @@
   }
 }
 
+.hero-folder-word {
+  position: relative;
+  display: inline-block;
+  transform-origin: 50% 58%;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  animation: hero-folder-action 13s ease-in-out 1.4s infinite;
+}
+
+.hero-folder-pointer {
+  position: absolute;
+  right: -24px;
+  bottom: -12px;
+  z-index: 2;
+  color: #5f19ff;
+  filter: drop-shadow(0 8px 12px rgb(95 25 255 / 0.22));
+  opacity: 0;
+  transform: translate(18px, 18px) rotate(-18deg) scale(0.92);
+  transform-origin: 26px 25px;
+  animation: hero-folder-pointer-tap 13s ease-in-out 1.4s infinite;
+}
+
+@keyframes hero-folder-pointer-tap {
+  0%,
+  5.4%,
+  22.6%,
+  100% {
+    opacity: 0;
+    transform: translate(18px, 18px) rotate(-18deg) scale(0.92);
+  }
+
+  8.6%,
+  12.9% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-18deg) scale(1);
+  }
+
+  13.5% {
+    opacity: 1;
+    transform: translate(-2px, 2px) rotate(-18deg) scale(1.14);
+  }
+
+  16.2% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-18deg) scale(0.97);
+  }
+
+  18.3% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-18deg) scale(1);
+  }
+}
+
+@keyframes hero-folder-action {
+  0%,
+  11.8%,
+  18.3% {
+    transform: perspective(640px) scale(1) rotateY(0deg);
+  }
+
+  13.5% {
+    transform: perspective(640px) scale(0.88) rotateY(0deg);
+  }
+
+  16.7% {
+    transform: perspective(640px) scale(1.03) rotateY(0deg);
+  }
+
+  22.6% {
+    transform: perspective(640px) scale(1) rotateY(0deg);
+  }
+
+  28%,
+  100% {
+    transform: perspective(640px) scale(1) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-folder-word,
+  .hero-folder-pointer {
+    animation: none;
+  }
+
+  .hero-folder-pointer {
+    display: none;
+  }
+}
+
 .knowledge-map {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1.08fr) 56px minmax(0, 1fr);
@@ -190,7 +279,7 @@
   left: 10px;
   width: 8px;
   height: 8px;
-  border-radius: 999px;
+  border-radius: 12px;
   background: #8b5cf6;
   content: '';
   opacity: 0;
@@ -491,9 +580,136 @@ body {
   }
 }
 
+.codex-chat-window {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  border: 1px solid #d9e2ef;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 52px rgb(15 23 42 / 0.08);
+  overflow: hidden;
+}
+
+.codex-chat-titlebar {
+  position: relative;
+  display: flex;
+  min-height: 51px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #e6edf7;
+  padding: 0 28px;
+}
+
+.codex-chat-dots {
+  position: absolute;
+  left: 28px;
+  display: flex;
+  gap: 11px;
+}
+
+.codex-chat-dots span {
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+}
+
+.codex-chat-title {
+  color: #6f7280;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.codex-chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 30px 28px 34px;
+}
+
+.codex-chat-turn {
+  display: grid;
+  gap: 16px;
+}
+
+.codex-chat-message {
+  width: fit-content;
+  max-width: 92%;
+  justify-self: end;
+  border-radius: 12px;
+  background: #f0f0f2;
+  color: #777986;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  padding: 12px 20px;
+}
+
+.codex-chat-duration {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  color: #777986;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.codex-chat-turn p {
+  margin: 0;
+  color: #747887;
+  font-size: 14px;
+  font-weight: 450;
+  line-height: 1.55;
+}
+
+@media (max-width: 1279px) {
+  .codex-chat-window {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .codex-chat-titlebar {
+    min-height: 70px;
+    padding: 0 22px;
+  }
+
+  .codex-chat-dots {
+    left: 22px;
+    gap: 8px;
+  }
+
+  .codex-chat-dots span {
+    width: 10px;
+    height: 10px;
+  }
+
+  .codex-chat-thread {
+    gap: 22px;
+    padding: 24px 20px 26px;
+  }
+
+  .codex-chat-message {
+    justify-self: start;
+    max-width: 100%;
+  }
+}
+
 @media (orientation: landscape) and (min-width: 600px) and (max-width: 900px) {
   .meet-mia-intro {
     grid-template-columns: minmax(220px, 34%) minmax(0, 1fr);
+  }
+
+  .meet-mia-image,
+  .meet-mia-copy {
+    grid-column: auto;
+  }
+
+  .meet-mia-codex {
+    grid-column: 1 / -1;
+    padding-top: 0;
   }
 
   .meet-mia-image {

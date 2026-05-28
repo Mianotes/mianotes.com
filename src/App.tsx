@@ -4,7 +4,7 @@ import { Hero } from './components/Hero';
 import { WhyMianotes } from './components/WhyMianotes';
 import { Screens } from './components/Screens';
 import { HowItWorks } from './components/HowItWorks';
-import { MeetMia } from './components/MeetMia';
+import { Developers } from './components/Developers';
 import { UseCases } from './components/UseCases';
 import { CodeShowcase } from './components/CodeShowcase';
 import { Footer } from './components/Footer';
@@ -18,7 +18,7 @@ export function App() {
         <HowItWorks />
         <Screens />
         <UseCases />
-        <MeetMia />
+        <Developers />
         <CodeShowcase />
       </main>
       <Footer />

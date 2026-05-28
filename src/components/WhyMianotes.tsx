@@ -186,7 +186,7 @@ export function WhyMianotes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="why-mianotes-layout">
           <div className="why-mianotes-copy">
-            <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="flex items-start gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight md:items-center">
               <LogoMark className="h-[48px] w-[48px] shrink-0" />
               <span>Why Mianotes exists</span>
             </h2>

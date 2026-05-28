@@ -317,7 +317,7 @@ export function HowItWorks() {
     <section id="how-it-works" className="how-section py-[86px] bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mb-16">
-          <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="flex items-start gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight md:items-center">
             <LogoMark className="h-[48px] w-[48px] shrink-0" />
             <span>How it works</span>
           </h2>
@@ -375,7 +375,7 @@ export function HowItWorks() {
           <Arrow x1={960} y1={420} x2={1034} y2={420} />
 
           <text x="1092" y="113" className="how-svg-title">
-            3. Storage
+            3. Local storage
           </text>
           <rect x="1075" y="150" width="354" height="625" rx="14" fill="#fff" stroke="#dde3ee" strokeWidth="1.5" />
           <text x="1252" y="195" textAnchor="middle" className="how-svg-storage-title">

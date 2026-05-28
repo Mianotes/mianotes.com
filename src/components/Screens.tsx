@@ -66,7 +66,7 @@ export function Screens() {
     <section id="app" className="py-[86px] bg-white bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
-          <h2 className="flex items-center gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="flex items-start gap-3 text-4xl font-bold text-slate-900 mb-4 tracking-tight md:items-center">
             <LogoMark className="h-[48px] w-[48px] shrink-0" />
             <span>The Mianotes web app</span>
           </h2>

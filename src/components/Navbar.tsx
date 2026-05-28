@@ -3,6 +3,9 @@ import { Github, Download } from 'lucide-react';
 import { jumpToDownload } from '../jumpToDownload';
 import { Logo } from './Logo';
 
+const DOCS_URL =
+  'https://github.com/Mianotes/mianotes-web-service/blob/main/docs/TOC.md';
+
 function jumpToTop() {
   const root = document.documentElement;
   const previousScrollBehavior = root.style.scrollBehavior;
@@ -52,13 +55,15 @@ export function Navbar() {
               Use cases
             </a>
             <a
-              href="#meet-mia"
+              href="#developers"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
-              Meet Mia
+              Developers
             </a>
             <a
-              href="#docs"
+              href={DOCS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
               Docs
