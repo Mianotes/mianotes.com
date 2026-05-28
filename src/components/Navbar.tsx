@@ -1,7 +1,9 @@
 import React from 'react';
 import { Github, Download } from 'lucide-react';
 import { jumpToDownload } from '../jumpToDownload';
+import { scrollToSection } from '../scrollToSection';
 import { Logo } from './Logo';
+import { XIcon } from './SocialIcons';
 
 const DOCS_URL =
   'https://github.com/Mianotes/mianotes-web-service/blob/main/docs/TOC.md';
@@ -17,6 +19,12 @@ function jumpToTop() {
 }
 
 export function Navbar() {
+  const onSectionClick =
+    (sectionId: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      scrollToSection(sectionId);
+    };
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,28 +42,33 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#why"
+              onClick={onSectionClick('why')}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               Why
             </a>
             <a
               href="#how-it-works"
+              onClick={onSectionClick('how-it-works')}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               How it works
             </a>
             <a
               href="#app"
+              onClick={onSectionClick('app')}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
               Web app
             </a>
             <a
               href="#use-cases"
+              onClick={onSectionClick('use-cases')}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
               Use cases
             </a>
             <a
               href="#developers"
+              onClick={onSectionClick('developers')}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
               Developers
@@ -79,6 +92,14 @@ export function Navbar() {
               className="text-slate-500 hover:text-slate-900 transition-colors hidden sm:block">
               
               <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://x.com/mianotesapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-900 transition-colors hidden sm:block">
+              <span className="sr-only">X</span>
+              <XIcon className="w-5 h-5" />
             </a>
             <button
               type="button"

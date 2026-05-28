@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github } from 'lucide-react';
 import { Logo } from './Logo';
+import { XIcon } from './SocialIcons';
 
 const DOCS_URL =
   'https://github.com/Mianotes/mianotes-web-service/blob/main/docs/TOC.md';
@@ -41,10 +42,20 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/Mianotes"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-400 hover:text-slate-900 transition-colors">
               
               <span className="sr-only">GitHub</span>
               <Github className="w-6 h-6" />
+            </a>
+            <a
+              href="https://x.com/mianotesapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-900 transition-colors">
+              <span className="sr-only">X</span>
+              <XIcon className="w-6 h-6" />
             </a>
           </div>
         </div>
