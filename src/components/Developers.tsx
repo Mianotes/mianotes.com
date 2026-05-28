@@ -97,7 +97,7 @@ export function Developers() {
                       <p className="text-sm font-semibold text-slate-900">
                         Built with open source.
                       </p>
-                      <p className="text-sm font-semibold text-slate-900">
+                      <p className="text-sm text-slate-900">
                         Mianotes uses Microsoft MarkItDown for file conversion and Ollama for local AI models.
                       </p>
                     </div>
