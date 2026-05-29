@@ -36,7 +36,7 @@ export function DownloadApp() {
     {
       label: 'macOS',
       description: 'Mianotes v0.2.0 (macOS)',
-      recommendation: 'Recommended for Mac mini',
+      recommendation: 'Recommended for MacBook and Mac mini',
       file: 'mianotes.pkg',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.pkg',
       icon: <AppleIcon className="h-6 w-6" />
@@ -83,7 +83,7 @@ export function DownloadApp() {
                     {download.icon}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-black uppercase tracking-[0.16em] text-slate-500">
+                    <p className="text-sm font-mono font-black text-slate-500">
                       {download.label}
                     </p>
                     <h3 className="mt-2 text-xl font-bold text-slate-900">

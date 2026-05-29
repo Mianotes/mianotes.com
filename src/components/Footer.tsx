@@ -34,6 +34,7 @@ export function Footer() {
             </a>
             <a
               href="https://raw.githubusercontent.com/Mianotes/mianotes-web-service/refs/heads/main/LICENCE"
+              target="_blank"
               className="hover:text-brand-purple transition-colors">
               GPL-3.0 License
             </a>
