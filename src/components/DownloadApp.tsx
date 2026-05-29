@@ -188,8 +188,9 @@ export function DownloadApp() {
                   key={command.command}
                   type="button"
                   onClick={() => setActiveCommand(command.command)}
-                  className="font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+                  className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
                 >
+                  <Terminal className="h-3.5 w-3.5 text-brand-purple" />
                   {command.command}
                 </button>
               ))}
@@ -250,7 +251,7 @@ export function DownloadApp() {
           onClick={() => setActiveCommand(null)}
         >
           <div
-            className="w-full max-w-3xl rounded-3xl bg-white p-5 shadow-2xl sm:p-7"
+            className="w-full max-w-3xl rounded-[14px] bg-white p-5 shadow-2xl sm:p-7"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -276,7 +277,7 @@ export function DownloadApp() {
               </button>
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-[#0d1117] shadow-xl">
+            <div className="mt-6 overflow-hidden rounded-[16px] border border-slate-800 bg-[#0d1117] shadow-xl">
               <div className="flex items-center gap-3 border-b border-slate-800 bg-[#161b22] px-4 py-3">
                 <div className="flex space-x-2">
                   <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
