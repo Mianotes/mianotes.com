@@ -126,6 +126,9 @@ function MarkdownConversionIllustration() {
         <circle cx="60" cy="62" r="7.5" fill="#ff575d" />
         <circle cx="90" cy="62" r="7.5" fill="#ffb31a" />
         <circle cx="120" cy="62" r="7.5" fill="#37d36f" />
+        <text x="265" y="67" textAnchor="middle" className="why-preview-window-title">
+          LOCAL PROCESSING...
+        </text>
         <line x1="48" y1="98" x2="482" y2="98" stroke="#e3eaf4" strokeWidth="1.4" />
 
         {previewNotes.map((note, index) => {
