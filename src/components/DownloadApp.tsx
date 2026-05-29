@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
+const VERSION = "0.2.3";
+
 function AppleIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -37,18 +39,18 @@ export function DownloadApp() {
   const packageDownloads = [
     {
       label: 'macOS',
-      description: 'Mianotes v0.2.0 (macOS)',
+      description: `Mianotes v${VERSION} (macOS)`,
       recommendation: 'Recommended for MacBook and Mac mini',
       file: 'mianotes.pkg',
-      href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.pkg',
+      href: `https://github.com/Mianotes/install/releases/download/v${VERSION}/mianotes.pkg`,
       icon: <AppleIcon className="h-6 w-6" />
     },
     {
       label: 'Ubuntu',
-      description: 'Mianotes v0.2.0 (Ubuntu)',
+      description: `Mianotes v${VERSION} (Ubuntu)`,
       recommendation: 'Recommended for Linux servers',
       file: 'mianotes.deb',
-      href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.deb',
+      href: `https://github.com/Mianotes/install/releases/download/v${VERSION}/mianotes.deb`,
       icon: <UbuntuIcon className="h-6 w-6" />
     }
   ];
@@ -77,64 +79,69 @@ export function DownloadApp() {
         </div>
 
         <div className="mx-auto mt-12 w-full lg:w-4/5">
-          <div className="grid gap-4 md:grid-cols-2">
-            {packageDownloads.map((download) => (
-              <a
-                key={download.label}
-                href={download.href}
-                className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all hover:-translate-y-0.5 hover:border-brand-purple/40 hover:bg-white hover:shadow-lg"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors group-hover:text-brand-purple">
-                    {download.icon}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-mono font-black text-slate-500">
-                      {download.label}
-                    </p>
-                    <h3 className="mt-2 text-xl font-bold text-slate-900">
-                      {download.description}
-                    </h3>
-                    <p className="mt-1 text-sm font-medium text-slate-500">
-                      {download.recommendation}
-                    </p>
-                    <div className="mt-5 flex items-center justify-between rounded-xl bg-white px-4 py-3 font-mono text-sm font-semibold text-slate-700 ring-1 ring-slate-200">
-                      {download.file}
-                      <Download className="h-4 w-4 text-slate-400 transition-colors group-hover:text-brand-purple" />
+          <div className="pb-14">
+            <h4 className="text-lg font-bold text-slate-900">
+              Install from package
+            </h4>
+            <div className="grid gap-4 md:grid-cols-2">
+              {packageDownloads.map((download) => (
+                <a
+                  key={download.label}
+                  href={download.href}
+                  className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all hover:-translate-y-0.5 hover:border-brand-purple/40 hover:bg-white hover:shadow-lg"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors group-hover:text-brand-purple">
+                      {download.icon}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-mono font-black text-slate-500">
+                        {download.label}
+                      </p>
+                      <h3 className="mt-2 text-xl font-bold text-slate-900">
+                        {download.description}
+                      </h3>
+                      <p className="mt-1 text-sm font-medium text-slate-500">
+                        {download.recommendation}
+                      </p>
+                      <div className="mt-5 flex items-center justify-between rounded-xl bg-white px-4 py-3 font-mono text-sm font-semibold text-slate-700 ring-1 ring-slate-200">
+                        {download.file}
+                        <Download className="h-4 w-4 text-slate-400 transition-colors group-hover:text-brand-purple" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-5 text-center sm:px-6">
-            <p className="mx-auto max-w-3xl text-sm font-medium text-slate-600">
-              Open{' '}
-              <a
-                href="http://localhost:8201"
-                className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
-              >
-                http://localhost:8201
-              </a>{' '}
-              when the installation finishes. You can also manage Mianotes from Terminal:
-            </p>
-            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
-              {packageCommands.map((command) => (
-                <button
-                  key={command.command}
-                  type="button"
-                  onClick={() => setActiveCommand(command.command)}
-                  className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
-                >
-                  <Terminal className="h-3.5 w-3.5 text-brand-purple" />
-                  {command.command}
-                </button>
+                </a>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-5 text-center sm:px-6">
+              <p className="mx-auto max-w-3xl text-sm font-medium text-slate-600">
+                Open{' '}
+                <a
+                  href="http://localhost:8201"
+                  className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+                >
+                  http://localhost:8201
+                </a>{' '}
+                when the installation finishes. You can also manage Mianotes from Terminal:
+              </p>
+              <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
+                {packageCommands.map((command) => (
+                  <button
+                    key={command.command}
+                    type="button"
+                    onClick={() => setActiveCommand(command.command)}
+                    className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+                  >
+                    <Terminal className="h-3.5 w-3.5 text-brand-purple" />
+                    {command.command}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="mt-10 mb-5 max-w-3xl">
+          <div className="mb-5 max-w-3xl">
             <h4 className="text-lg font-bold text-slate-900">
               Install from source
             </h4>
@@ -177,18 +184,13 @@ export function DownloadApp() {
           </div>
 
           <div className="flex flex-col items-center py-[51px] text-center">
-            <img
-              src="/mia_headshot.png"
-              alt="Mia"
-              className="mb-4 h-24 w-24 rounded-full object-cover"
-            />
             <a
               href="https://tally.so/r/xXvQbk"
               target="_blank"
               rel="noreferrer"
               className="text-sm font-semibold text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
             >
-              Help us make Mianotes better
+              Tell us what to improve
             </a>
           </div>
         </div>

@@ -6,6 +6,41 @@ export type PackageCommand = {
 
 export const packageCommands: PackageCommand[] = [
   {
+    command: 'mianotes open',
+    description: 'Open the Mianotes dashboard in your browser.',
+    output: ['$ mianotes open', 'open "http://127.0.0.1:8201"'].join('\n')
+  },
+  {
+    command: 'mianotes status',
+    description:
+      'Show the current launchd service status for the API and dashboard.',
+    output: [
+      '$ mianotes status',
+      '  system/com.mianotes.web-service = {',
+      '  active count = 1',
+      '  path = /Library/LaunchDaemons/com.mianotes.web-service.plist',
+      '  type = LaunchDaemon',
+      '  state = running',
+      '',
+      '  program = /Library/Application Support/Mianotes/bin/start-web-service.sh',
+      '  arguments = {',
+      '    /Library/Application Support/Mianotes/bin/start-web-service.sh',
+      '  }',
+      '',
+      '  working directory = /Library/Application Support/Mianotes/web-service',
+      '',
+      '  stdout path = /Library/Logs/Mianotes/web-service.log',
+      '  stderr path = /Library/Logs/Mianotes/web-service.err.log',
+      '  default environment = {',
+      '    PATH => /usr/bin:/bin:/usr/sbin:/sbin',
+      '  }',
+      '',
+      '  environment = {',
+      '    XPC_SERVICE_NAME => com.mianotes.web-service',
+      '  }'
+    ].join('\n')
+  },
+  {
     command: 'mianotes doctor',
     description:
       'Check that Mianotes, its services, and bundled tools are installed correctly.',
@@ -43,41 +78,6 @@ export const packageCommands: PackageCommand[] = [
       '  dashboard                http://127.0.0.1:8201',
       '  api                      http://127.0.0.1:8200'
     ].join('\n')
-  },
-  {
-    command: 'mianotes status',
-    description:
-      'Show the current launchd service status for the API and dashboard.',
-    output: [
-      '$ mianotes status',
-      '  system/com.mianotes.web-service = {',
-      '  active count = 1',
-      '  path = /Library/LaunchDaemons/com.mianotes.web-service.plist',
-      '  type = LaunchDaemon',
-      '  state = running',
-      '',
-      '  program = /Library/Application Support/Mianotes/bin/start-web-service.sh',
-      '  arguments = {',
-      '    /Library/Application Support/Mianotes/bin/start-web-service.sh',
-      '  }',
-      '',
-      '  working directory = /Library/Application Support/Mianotes/web-service',
-      '',
-      '  stdout path = /Library/Logs/Mianotes/web-service.log',
-      '  stderr path = /Library/Logs/Mianotes/web-service.err.log',
-      '  default environment = {',
-      '    PATH => /usr/bin:/bin:/usr/sbin:/sbin',
-      '  }',
-      '',
-      '  environment = {',
-      '    XPC_SERVICE_NAME => com.mianotes.web-service',
-      '  }'
-    ].join('\n')
-  },
-  {
-    command: 'mianotes open',
-    description: 'Open the Mianotes dashboard in your browser.',
-    output: ['$ mianotes open', 'open "http://127.0.0.1:8201"'].join('\n')
   },
   {
     command: 'mianotes logs',
