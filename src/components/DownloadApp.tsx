@@ -102,7 +102,16 @@ export function DownloadApp() {
             ))}
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-[#0d1117] shadow-2xl">
+          <div className="mt-10 mb-5 max-w-3xl">
+            <h4 className="text-lg font-bold text-slate-900">
+              Install from source
+            </h4>
+            <p className="mt-2 text-base leading-relaxed text-slate-600">
+              Use one command to clone the web service and dashboard, install everything in a local environment, build the app, and start Mianotes automatically.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-[#0d1117] shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-800 bg-[#161b22] px-4 py-3">
               <div className="flex items-center gap-3">
                 <div className="flex space-x-2">
