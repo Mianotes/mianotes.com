@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
+import { packageCommands } from '../data/packageCommands';
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -49,77 +50,6 @@ export function DownloadApp() {
       file: 'mianotes.deb',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.deb',
       icon: <UbuntuIcon className="h-6 w-6" />
-    }
-  ];
-
-  const packageCommands = [
-    {
-      command: 'mianotes doctor',
-      description:
-        'Check that Mianotes, its services, and bundled tools are installed correctly.',
-      output: [
-        '$ mianotes doctor',
-        'Checking Mianotes installation...',
-        'API service: ok',
-        'Dashboard service: ok',
-        'Python environment: ok',
-        'Node runtime: ok',
-        'Bundled tools: ok',
-        '',
-        'Mianotes looks healthy.'
-      ].join('\n')
-    },
-    {
-      command: 'mianotes status',
-      description:
-        'Show the current launchd service status for the API and dashboard.',
-      output: [
-        '$ mianotes status',
-        'Mianotes API',
-        '  status: running',
-        '  url: http://127.0.0.1:8200',
-        '',
-        'Mianotes Dashboard',
-        '  status: running',
-        '  url: http://127.0.0.1:8201'
-      ].join('\n')
-    },
-    {
-      command: 'mianotes open',
-      description: 'Open the Mianotes dashboard in your browser.',
-      output: [
-        '$ mianotes open',
-        'Opening Mianotes dashboard...',
-        'http://127.0.0.1:8201',
-        '',
-        'If the browser does not open automatically, paste the URL above into your browser.'
-      ].join('\n')
-    },
-    {
-      command: 'mianotes logs',
-      description: 'Show recent API and dashboard logs for troubleshooting.',
-      output: [
-        '$ mianotes logs',
-        '== API ==',
-        'INFO: Application startup complete.',
-        'INFO: 127.0.0.1 - GET /api/health 200 OK',
-        '',
-        '== Dashboard ==',
-        'Vite dev server ready.',
-        'Dashboard available at http://127.0.0.1:8201'
-      ].join('\n')
-    },
-    {
-      command: 'mianotes uninstall',
-      description: 'Remove Mianotes services and app files while keeping your data.',
-      output: [
-        '$ mianotes uninstall',
-        'Stopping Mianotes services...',
-        'Removing app files...',
-        'Keeping local data folder untouched.',
-        '',
-        'Mianotes has been uninstalled.'
-      ].join('\n')
     }
   ];
 
