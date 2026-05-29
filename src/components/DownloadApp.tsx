@@ -108,11 +108,18 @@ export function DownloadApp() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-5 sm:px-6">
-            <p className="text-sm font-medium text-slate-600">
-              These commands are available when you install Mianotes from a package:
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-5 text-center sm:px-6">
+            <p className="mx-auto max-w-3xl text-sm font-medium text-slate-600">
+              Open{' '}
+              <a
+                href="http://localhost:8201"
+                className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+              >
+                http://localhost:8201
+              </a>{' '}
+              when the installation finishes. You can also manage Mianotes from Terminal:
             </p>
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
               {packageCommands.map((command) => (
                 <button
                   key={command.command}
@@ -167,6 +174,22 @@ export function DownloadApp() {
                 {installCommand}
               </code>
             </pre>
+          </div>
+
+          <div className="flex flex-col items-center py-[51px] text-center">
+            <img
+              src="/mia_headshot.png"
+              alt="Mia"
+              className="mb-4 h-24 w-24 rounded-full object-cover"
+            />
+            <a
+              href="https://tally.so/r/xXvQbk"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-semibold text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+            >
+              Help us make Mianotes better
+            </a>
           </div>
         </div>
       </div>
