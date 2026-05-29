@@ -35,16 +35,16 @@ export function CodeShowcase() {
   const packageDownloads = [
     {
       label: 'macOS',
-      description: 'Download the native macOS package.',
+      description: 'Download v0.2.0 macOS installer',
       file: 'mianotes.pkg',
-      href: 'https://github.com/Mianotes/install/releases/latest/download/mianotes.pkg',
+      href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.pkg',
       icon: <AppleIcon className="h-6 w-6" />
     },
     {
       label: 'Ubuntu',
-      description: 'Download the native Ubuntu package.',
+      description: 'Download v0.2.0 Ubuntu installer',
       file: 'mianotes.deb',
-      href: 'https://github.com/Mianotes/install/releases/latest/download/mianotes.deb',
+      href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.deb',
       icon: <UbuntuIcon className="h-6 w-6" />
     }
   ];
