@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Clipboard, Download, Terminal } from 'lucide-react';
+import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -29,6 +29,7 @@ function UbuntuIcon({ className }: { className?: string }) {
 
 export function DownloadApp() {
   const [copied, setCopied] = useState(false);
+  const [activeCommand, setActiveCommand] = useState<string | null>(null);
   const installCommand =
     '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Mianotes/install/HEAD/install.sh)"';
 
@@ -50,6 +51,81 @@ export function DownloadApp() {
       icon: <UbuntuIcon className="h-6 w-6" />
     }
   ];
+
+  const packageCommands = [
+    {
+      command: 'mianotes doctor',
+      description:
+        'Check that Mianotes, its services, and bundled tools are installed correctly.',
+      output: [
+        '$ mianotes doctor',
+        'Checking Mianotes installation...',
+        'API service: ok',
+        'Dashboard service: ok',
+        'Python environment: ok',
+        'Node runtime: ok',
+        'Bundled tools: ok',
+        '',
+        'Mianotes looks healthy.'
+      ].join('\n')
+    },
+    {
+      command: 'mianotes status',
+      description:
+        'Show the current launchd service status for the API and dashboard.',
+      output: [
+        '$ mianotes status',
+        'Mianotes API',
+        '  status: running',
+        '  url: http://127.0.0.1:8200',
+        '',
+        'Mianotes Dashboard',
+        '  status: running',
+        '  url: http://127.0.0.1:8201'
+      ].join('\n')
+    },
+    {
+      command: 'mianotes open',
+      description: 'Open the Mianotes dashboard in your browser.',
+      output: [
+        '$ mianotes open',
+        'Opening Mianotes dashboard...',
+        'http://127.0.0.1:8201',
+        '',
+        'If the browser does not open automatically, paste the URL above into your browser.'
+      ].join('\n')
+    },
+    {
+      command: 'mianotes logs',
+      description: 'Show recent API and dashboard logs for troubleshooting.',
+      output: [
+        '$ mianotes logs',
+        '== API ==',
+        'INFO: Application startup complete.',
+        'INFO: 127.0.0.1 - GET /api/health 200 OK',
+        '',
+        '== Dashboard ==',
+        'Vite dev server ready.',
+        'Dashboard available at http://127.0.0.1:8201'
+      ].join('\n')
+    },
+    {
+      command: 'mianotes uninstall',
+      description: 'Remove Mianotes services and app files while keeping your data.',
+      output: [
+        '$ mianotes uninstall',
+        'Stopping Mianotes services...',
+        'Removing app files...',
+        'Keeping local data folder untouched.',
+        '',
+        'Mianotes has been uninstalled.'
+      ].join('\n')
+    }
+  ];
+
+  const selectedCommand = packageCommands.find(
+    (command) => command.command === activeCommand
+  );
 
   const copyCommand = async () => {
     await navigator.clipboard.writeText(installCommand);
@@ -102,6 +178,24 @@ export function DownloadApp() {
             ))}
           </div>
 
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-5 sm:px-6">
+            <p className="text-sm font-medium text-slate-600">
+              These commands are available when you install Mianotes from a package:
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+              {packageCommands.map((command) => (
+                <button
+                  key={command.command}
+                  type="button"
+                  onClick={() => setActiveCommand(command.command)}
+                  className="font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+                >
+                  {command.command}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-10 mb-5 max-w-3xl">
             <h4 className="text-lg font-bold text-slate-900">
               Install from source
@@ -146,6 +240,63 @@ export function DownloadApp() {
           </div>
         </div>
       </div>
+
+      {selectedCommand ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="package-command-title"
+          onClick={() => setActiveCommand(null)}
+        >
+          <div
+            className="w-full max-w-3xl rounded-3xl bg-white p-5 shadow-2xl sm:p-7"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h4
+                  id="package-command-title"
+                  className="flex items-center gap-3 text-xl font-bold text-slate-900"
+                >
+                  <Terminal className="h-5 w-5 text-brand-purple" />
+                  {selectedCommand.command}
+                </h4>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  {selectedCommand.description}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveCommand(null)}
+                className="inline-flex h-10 min-w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                aria-label="Close command output"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-[#0d1117] shadow-xl">
+              <div className="flex items-center gap-3 border-b border-slate-800 bg-[#161b22] px-4 py-3">
+                <div className="flex space-x-2">
+                  <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
+                  <div className="h-3 w-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="h-3 w-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
+                  <Terminal className="h-3.5 w-3.5" />
+                  CLI
+                </div>
+              </div>
+              <pre className="max-h-[420px] overflow-auto px-5 py-5 text-left sm:px-6">
+                <code className="whitespace-pre font-mono text-sm leading-relaxed text-slate-100">
+                  {selectedCommand.output}
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
