@@ -36,6 +36,7 @@ export function DownloadApp() {
     {
       label: 'macOS',
       description: 'Mianotes v0.2.0 (macOS)',
+      recommendation: 'Recommended for Mac mini',
       file: 'mianotes.pkg',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.pkg',
       icon: <AppleIcon className="h-6 w-6" />
@@ -43,6 +44,7 @@ export function DownloadApp() {
     {
       label: 'Ubuntu',
       description: 'Mianotes v0.2.0 (Ubuntu)',
+      recommendation: 'Recommended for Linux servers',
       file: 'mianotes.deb',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.deb',
       icon: <UbuntuIcon className="h-6 w-6" />
@@ -87,6 +89,9 @@ export function DownloadApp() {
                     <h3 className="mt-2 text-xl font-bold text-slate-900">
                       {download.description}
                     </h3>
+                    <p className="mt-1 text-sm font-medium text-slate-500">
+                      {download.recommendation}
+                    </p>
                     <div className="mt-5 flex items-center justify-between rounded-xl bg-white px-4 py-3 font-mono text-sm font-semibold text-slate-700 ring-1 ring-slate-200">
                       {download.file}
                       <Download className="h-4 w-4 text-slate-400 transition-colors group-hover:text-brand-purple" />
