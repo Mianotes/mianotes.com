@@ -27,7 +27,7 @@ function UbuntuIcon({ className }: { className?: string }) {
   );
 }
 
-export function CodeShowcase() {
+export function DownloadApp() {
   const [copied, setCopied] = useState(false);
   const installCommand =
     '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Mianotes/install/HEAD/install.sh)"';
@@ -35,14 +35,14 @@ export function CodeShowcase() {
   const packageDownloads = [
     {
       label: 'macOS',
-      description: 'Download v0.2.0 macOS installer',
+      description: 'Mianotes v0.2.0 (macOS)',
       file: 'mianotes.pkg',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.pkg',
       icon: <AppleIcon className="h-6 w-6" />
     },
     {
       label: 'Ubuntu',
-      description: 'Download v0.2.0 Ubuntu installer',
+      description: 'Mianotes v0.2.0 (Ubuntu)',
       file: 'mianotes.deb',
       href: 'https://github.com/Mianotes/install/releases/download/v0.2.0/mianotes.deb',
       icon: <UbuntuIcon className="h-6 w-6" />

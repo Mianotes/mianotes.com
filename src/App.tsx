@@ -6,7 +6,7 @@ import { Screens } from './components/Screens';
 import { HowItWorks } from './components/HowItWorks';
 import { Developers } from './components/Developers';
 import { UseCases } from './components/UseCases';
-import { CodeShowcase } from './components/CodeShowcase';
+import { DownloadApp } from './components/DownloadApp';
 import { Footer } from './components/Footer';
 export function App() {
   return (
@@ -19,7 +19,7 @@ export function App() {
         <Screens />
         <UseCases />
         <Developers />
-        <CodeShowcase />
+        <DownloadApp />
       </main>
       <Footer />
     </div>);
