@@ -145,7 +145,6 @@ export function DownloadApp() {
                   <div className="h-3 w-3 rounded-full bg-green-500/80"></div>
                 </div>
                 <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
-                  <Terminal className="h-3.5 w-3.5" />
                   CLI
                 </div>
               </div>
@@ -215,7 +214,6 @@ export function DownloadApp() {
                   <div className="h-3 w-3 rounded-full bg-green-500/80"></div>
                 </div>
                 <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
-                  <Terminal className="h-3.5 w-3.5" />
                   CLI
                 </div>
               </div>
