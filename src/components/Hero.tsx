@@ -10,7 +10,7 @@ import {
   SlackIcon,
   MCPIcon } from
 './BrandIcons';
-import { jumpToDownload } from '../jumpToDownload';
+import { jumpToDownload } from '../utils/jumpToDownload';
 const integrations = [
 {
   name: 'Ollama',

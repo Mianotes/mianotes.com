@@ -1,7 +1,7 @@
 import React from 'react';
 import { Github, Download } from 'lucide-react';
-import { jumpToDownload } from '../jumpToDownload';
-import { scrollToSection } from '../scrollToSection';
+import { jumpToDownload } from '../utils/jumpToDownload';
+import { scrollToSection } from '../utils/scrollToSection';
 import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
