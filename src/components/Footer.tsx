@@ -9,10 +9,12 @@ export function Footer() {
   return (
     <footer className="bg-slate-50 py-12 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <Logo markClassName="h-8 w-8" textClassName="text-xl" />
+        <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+          <div className="justify-self-center md:justify-self-start">
+            <Logo markClassName="h-8 w-8" textClassName="text-xl" />
+          </div>
 
-          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-4 text-center text-sm font-medium text-slate-500 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm font-medium text-slate-500">
             <a href={DOCS_URL} className="hover:text-brand-purple transition-colors">
               API Reference
             </a>
@@ -29,7 +31,7 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-self-center md:justify-self-end">
             <a
               href="https://github.com/Mianotes"
               target="_blank"
