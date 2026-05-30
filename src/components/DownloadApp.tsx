@@ -144,13 +144,15 @@ export function DownloadApp() {
             </div>
           </div>
 
-          <div className="mb-5 max-w-3xl">
-            <h4 className="text-lg font-bold text-slate-900">
-              Install from source
-            </h4>
-            <p className="mt-2 text-base leading-relaxed text-slate-600">
-              This command clones the web service and dashboard repos, installs the dependencies locally, builds the dashboard, and can start Mianotes for you.
-            </p>
+          <div className="mb-5">
+            <div className="max-w-3xl">
+              <h4 className="text-lg font-bold text-slate-900">
+                Install from source
+              </h4>
+              <p className="mt-2 text-base leading-relaxed text-slate-600">
+                This command clones the web service and dashboard repos, installs the dependencies locally, builds the dashboard, and can start Mianotes for you.
+              </p>
+            </div>
             <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
               <p>
@@ -159,36 +161,32 @@ export function DownloadApp() {
             </div>
           </div>
 
-          <div className="overflow-hidden border border-slate-300 bg-[#fbfbfb] shadow-sm">
-            <div className="flex min-h-10 items-center justify-between border-b border-slate-300 bg-[#f7f7f7] px-4">
+          <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#080d10] shadow-2xl">
+            <div className="flex min-h-12 items-center justify-between border-b border-slate-700 bg-[#111820] px-4">
               <div className="flex items-center gap-3">
                 <div className="flex space-x-2">
-                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
-                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
-                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
+                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={copyCommand}
-                className="inline-flex min-h-8 items-center gap-2 rounded-md px-2 text-xs font-semibold text-slate-500 transition-colors hover:bg-white hover:text-slate-900"
+                className="inline-flex min-h-8 items-center gap-2 rounded-md px-2 text-xs font-semibold text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
                 aria-label="Copy source install command"
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-emerald-500" />
+                  <Check className="h-5 w-5 text-emerald-300" />
                 ) : (
-                  <Clipboard className="h-4 w-4" />
+                  <Clipboard className="h-5 w-5" />
                 )}
               </button>
             </div>
 
-            <pre className="overflow-x-auto px-4 py-5 sm:px-6">
+            <pre className="overflow-x-auto px-5 py-7 sm:px-7">
               <code className="whitespace-nowrap font-mono text-sm sm:text-base">
-                <span className="text-[#7c3aed]">/bin/bash</span>
-                <span className="text-slate-900"> -c </span>
-                <span className="text-[#0f3d73]">
-                  &quot;$(curl -fsSL https://raw.githubusercontent.com/Mianotes/install/HEAD/install.sh)&quot;
-                </span>
+                <span className="text-slate-200">{installCommand}</span>
               </code>
             </pre>
           </div>
