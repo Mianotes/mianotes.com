@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
-const VERSION = "0.2.4";
+const VERSION = "0.2.5";
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -123,7 +123,7 @@ export function DownloadApp() {
                 >
                   http://localhost:8201
                 </a>{' '}
-                when the installation finishes.
+                when the installation finishes. Use it in your browser, or install it as a <a href="screens/screen_chrome_app.jpg" className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple" target="_blank">Chrome app</a>.
               </p>
               <p className="mt-8 text-sm font-medium text-slate-500">
                 You can also manage Mianotes from Terminal:

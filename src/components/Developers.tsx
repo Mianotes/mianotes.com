@@ -17,10 +17,10 @@ const codexMessages = [
     'Done. Added to Mianotes as "Spec: Multi-workspace architecture" in Research / Architecture.'
 },
 {
-  message: <>Save file into Mia(workspace: Research, folder: Sources)</>,
-  duration: '',
+  message: 'Save file into Mia(workspace: Research, folder: Sources)',
+  duration: 'Worked for 23s',
   response:
-    <>Done. Saved the file to Mianotes, indexed it, and added it to Research / Sources. (<a href="./mianotes_screencapture.png" target="_blank" style={{ textDecoration: 'underline dotted #ccc', textUnderlineOffset: '4px' }}>View note</a>)</>
+    'Done. Saved the file to Mianotes, indexed it, and added it to Research / Sources.'
 }];
 
 export function Developers() {
