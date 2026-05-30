@@ -5,8 +5,7 @@ import { scrollToSection } from '../scrollToSection';
 import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
-const DOCS_URL =
-  'https://github.com/Mianotes/mianotes-web-service/blob/main/docs/TOC.md';
+const DOCS_URL = '/docs/index.html';
 
 function jumpToTop() {
   const root = document.documentElement;
@@ -75,8 +74,6 @@ export function Navbar() {
             </a>
             <a
               href={DOCS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               
               Docs

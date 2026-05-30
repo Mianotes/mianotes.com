@@ -108,10 +108,12 @@ export function Hero() {
                 <Download className="w-5 h-5" />
                 Download Mianotes
               </button>
-              <button className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl transition-all shadow-sm gap-2">
+              <a
+                href="/docs/index.html"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl transition-all shadow-sm gap-2">
                 <BookOpen className="w-5 h-5 text-slate-400" />
                 Read the docs
-              </button>
+              </a>
             </div>
             <p className="pt-5 text-sm text-slate-500">
               Built on top of the open-source Microsoft MarkItDown and Ollama engines.

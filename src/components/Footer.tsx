@@ -3,8 +3,7 @@ import { Github } from 'lucide-react';
 import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
-const DOCS_URL =
-  'https://github.com/Mianotes/mianotes-web-service/blob/main/docs/TOC.md';
+const DOCS_URL = '/docs/index.html';
 
 export function Footer() {
   return (
@@ -14,18 +13,8 @@ export function Footer() {
           <Logo markClassName="h-8 w-8" textClassName="text-xl" />
 
           <div className="grid w-full grid-cols-2 gap-x-6 gap-y-4 text-center text-sm font-medium text-slate-500 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-3">
-            <a
-              href={DOCS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand-purple transition-colors">
-              Documentation
-            </a>
-            <a href="#" className="hover:text-brand-purple transition-colors">
+            <a href={DOCS_URL} className="hover:text-brand-purple transition-colors">
               API Reference
-            </a>
-            <a href="#" className="hover:text-brand-purple transition-colors">
-              MCP Server
             </a>
             <a
               href="https://github.com/Mianotes/mianotes-web-service/issues"
