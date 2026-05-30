@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
+import { Check, Clipboard, Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
-const VERSION = "0.2.6";
+const VERSION = "0.2.7";
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -149,39 +149,46 @@ export function DownloadApp() {
               Install from source
             </h4>
             <p className="mt-2 text-base leading-relaxed text-slate-600">
-              Use one command to clone the web service and dashboard, install everything in a local environment, build the app, and start Mianotes automatically.
+              This command clones the web service and dashboard repos, installs the dependencies locally, builds the dashboard, and can start Mianotes for you.
             </p>
+            <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
+              <p>
+                Requires Git, Python 3.11+, and Node.js/npm. For media and OCR support, install FFmpeg and Tesseract first. Check the source install docs before running the command.
+              </p>
+            </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-[#0d1117] shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 bg-[#161b22] px-4 py-3">
+          <div className="overflow-hidden border border-slate-300 bg-[#fbfbfb] shadow-sm">
+            <div className="flex min-h-10 items-center justify-between border-b border-slate-300 bg-[#f7f7f7] px-4">
               <div className="flex items-center gap-3">
                 <div className="flex space-x-2">
-                  <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
-                  <div className="h-3 w-3 rounded-full bg-yellow-500/80"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-500/80"></div>
-                </div>
-                <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
-                  CLI
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-300"></div>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={copyCommand}
-                className="inline-flex min-h-9 items-center gap-2 rounded-lg border border-slate-700 px-3 text-xs font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white"
+                className="inline-flex min-h-8 items-center gap-2 rounded-md px-2 text-xs font-semibold text-slate-500 transition-colors hover:bg-white hover:text-slate-900"
+                aria-label="Copy source install command"
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-emerald-300" />
+                  <Check className="h-4 w-4 text-emerald-500" />
                 ) : (
                   <Clipboard className="h-4 w-4" />
                 )}
-                {copied ? 'Copied' : 'Copy'}
               </button>
             </div>
 
-            <pre className="overflow-x-auto px-5 py-6 sm:px-6">
-              <code className="whitespace-nowrap font-mono text-sm text-slate-100 sm:text-base">
-                {installCommand}
+            <pre className="overflow-x-auto px-4 py-5 sm:px-6">
+              <code className="whitespace-nowrap font-mono text-sm sm:text-base">
+                <span className="text-[#7c3aed]">/bin/bash</span>
+                <span className="text-slate-900"> -c </span>
+                <span className="text-[#0f3d73]">
+                  &quot;$(curl -fsSL https://raw.githubusercontent.com/Mianotes/install/HEAD/install.sh)&quot;
+                </span>
               </code>
             </pre>
           </div>
