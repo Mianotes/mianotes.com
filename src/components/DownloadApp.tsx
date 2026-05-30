@@ -80,7 +80,7 @@ export function DownloadApp() {
 
         <div className="mx-auto mt-12 w-full lg:w-4/5">
           <div className="pb-14">
-            <h4 className="text-lg font-bold text-slate-900">
+            <h4 className="pb-4 text-lg font-bold text-slate-900">
               Install from package
             </h4>
             <div className="grid gap-4 md:grid-cols-2">
@@ -183,7 +183,10 @@ export function DownloadApp() {
             </pre>
           </div>
 
-          <div className="flex flex-col items-center py-[51px] text-center">
+          <div
+            className="flex flex-col items-center text-center"
+            style={{ paddingTop: '60px' }}
+          >
             <a
               href="https://tally.so/r/xXvQbk"
               target="_blank"
