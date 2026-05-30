@@ -115,10 +115,7 @@ export function DownloadApp() {
             </div>
 
             <div className="mt-8 text-center">
-              <p className="mx-auto max-w-3xl text-sm font-medium text-slate-600">
-                <span className="mr-2 inline-flex min-h-7 items-center rounded-full bg-violet-50 px-3 text-xs font-black uppercase tracking-[0.14em] text-brand-purple ring-1 ring-violet-100">
-                  Step 2
-                </span>
+              <p className="rounded-2xl border border-slate-200 bg-slate-50/80 px-5 py-4 text-sm font-medium text-slate-600">
                 Open{' '}
                 <a
                   href="http://localhost:8201"
@@ -128,7 +125,7 @@ export function DownloadApp() {
                 </a>{' '}
                 when the installation finishes.
               </p>
-              <p className="mt-3 text-sm font-medium text-slate-500">
+              <p className="mt-8 text-sm font-medium text-slate-500">
                 You can also manage Mianotes from Terminal:
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
