@@ -10,15 +10,6 @@ const previewNotes: Array<{
   tags: Array<{ label: string; width: number; tone: 'purple' | 'slate' }>;
 }> = [
   {
-    icon: 'file',
-    title: 'llm_memory_research.md',
-    subtitle: 'Converted from PDF',
-    tags: [
-      { label: '#research', width: 88, tone: 'purple' },
-      { label: '#llm', width: 56, tone: 'slate' }
-    ]
-  },
-  {
     icon: 'link',
     title: 'competitor_analysis.md',
     subtitle: 'Indexed from website',
@@ -29,11 +20,11 @@ const previewNotes: Array<{
   },
   {
     icon: 'mic',
-    title: 'architecture_review.md',
+    title: 'quarterly_earnings_report.md',
     subtitle: 'Transcribed from meeting',
     tags: [
-      { label: '#architecture', width: 116, tone: 'purple' },
-      { label: '#review', width: 78, tone: 'slate' }
+      { label: '#earnings', width: 116, tone: 'purple' },
+      { label: '#report', width: 78, tone: 'slate' }
     ]
   },
   {
@@ -43,6 +34,15 @@ const previewNotes: Array<{
     tags: [
       { label: '#setup', width: 68, tone: 'purple' },
       { label: '#local-ai', width: 86, tone: 'slate' }
+    ]
+  },
+  {
+    icon: 'file',
+    title: 'llm_memory_research.md',
+    subtitle: 'Converted from PDF',
+    tags: [
+      { label: '#research', width: 88, tone: 'purple' },
+      { label: '#llm', width: 56, tone: 'slate' }
     ]
   },
   {
@@ -56,7 +56,7 @@ const previewNotes: Array<{
   },
   {
     icon: 'chat',
-    title: 'codex_handoff_notes.md',
+    title: 'pm_handoff_notes.md',
     subtitle: 'Saved from agent output',
     tags: [
       { label: '#agents', width: 76, tone: 'purple' },
