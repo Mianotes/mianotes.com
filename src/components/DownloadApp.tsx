@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Clipboard, Download, Info, Terminal, X } from 'lucide-react';
+import { Check, Copy, Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
 const VERSION = "0.2.7";
@@ -179,7 +179,7 @@ export function DownloadApp() {
                 {copied ? (
                   <Check className="h-5 w-5 text-emerald-300" />
                 ) : (
-                  <Clipboard className="h-5 w-5" />
+                  <Copy className="h-5 w-5" />
                 )}
               </button>
             </div>
