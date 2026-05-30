@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Clipboard, Download, ExternalLink, Terminal, X } from 'lucide-react';
+import { Check, Clipboard, Download, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
 const VERSION = "0.2.3";
@@ -114,44 +114,35 @@ export function DownloadApp() {
               ))}
             </div>
 
-            <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5">
-              <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="mt-8 text-center">
+              <p className="mx-auto max-w-3xl text-sm font-medium text-slate-600">
+                <span className="mr-2 inline-flex min-h-7 items-center rounded-full bg-violet-50 px-3 text-xs font-black uppercase tracking-[0.14em] text-brand-purple ring-1 ring-violet-100">
+                  Step 2
+                </span>
+                Open{' '}
                 <a
                   href="http://localhost:8201"
-                  className="group flex items-center justify-between gap-4 rounded-2xl bg-white px-5 py-4 text-left ring-1 ring-slate-200 transition-all hover:-translate-y-0.5 hover:ring-brand-purple/30 hover:shadow-lg"
+                  className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
                 >
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-brand-purple">
-                      Next step
-                    </p>
-                    <p className="mt-2 font-mono text-base font-bold text-slate-900">
-                      http://localhost:8201
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-slate-500">
-                      Open this when the installation finishes.
-                    </p>
-                  </div>
-                  <ExternalLink className="h-5 w-5 shrink-0 text-slate-400 transition-colors group-hover:text-brand-purple" />
-                </a>
-
-                <div className="rounded-2xl bg-white px-5 py-4 ring-1 ring-slate-200">
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
-                    Terminal shortcuts
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {packageCommands.map((command) => (
-                      <button
-                        key={command.command}
-                        type="button"
-                        onClick={() => setActiveCommand(command.command)}
-                        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 font-mono text-xs font-semibold text-slate-700 transition-colors hover:border-brand-purple/40 hover:bg-white hover:text-brand-purple"
-                      >
-                        <Terminal className="h-3.5 w-3.5 text-brand-purple" />
-                        {command.command}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                  http://localhost:8201
+                </a>{' '}
+                when the installation finishes.
+              </p>
+              <p className="mt-3 text-sm font-medium text-slate-500">
+                You can also manage Mianotes from Terminal:
+              </p>
+              <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
+                {packageCommands.map((command) => (
+                  <button
+                    key={command.command}
+                    type="button"
+                    onClick={() => setActiveCommand(command.command)}
+                    className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
+                  >
+                    <Terminal className="h-3.5 w-3.5 text-brand-purple" />
+                    {command.command}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
