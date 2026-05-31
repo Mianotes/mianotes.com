@@ -778,27 +778,6 @@ body {
   color: #26282d;
 }
 
-.retrieve-context-cursor {
-  display: inline-block;
-  width: 7px;
-  height: 15px;
-  margin-top: 8px;
-  background: #7f5ccf;
-  animation: retrieve-cursor-blink 900ms steps(2, start) infinite;
-}
-
-@keyframes retrieve-cursor-blink {
-  0%,
-  45% {
-    opacity: 1;
-  }
-
-  46%,
-  100% {
-    opacity: 0;
-  }
-}
-
 @media (max-width: 1279px) {
   .codex-chat-window {
     min-height: auto;

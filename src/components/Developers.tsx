@@ -97,9 +97,9 @@ export function Developers() {
           return current;
         }
 
-        return Math.min(current + 4, retrieveContextTextLength);
+        return Math.min(current + 2, retrieveContextTextLength);
       });
-    }, 18);
+    }, 28);
 
     return () => {
       document.body.style.overflow = originalOverflow;
@@ -362,9 +362,6 @@ export function Developers() {
                   <ChevronRight className="h-4 w-4" />
                 </div>
                 {retrieveContextResponse}
-                {typedCharacters < retrieveContextTextLength ? (
-                  <span className="retrieve-context-cursor" aria-hidden="true" />
-                ) : null}
               </div>
             </div>
           </div>
