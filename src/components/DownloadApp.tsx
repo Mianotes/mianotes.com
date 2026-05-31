@@ -81,7 +81,7 @@ export function DownloadApp() {
         <div className="mx-auto mt-12 w-full lg:w-4/5">
           <div className="pb-16">
             <div className="mb-8 border-b border-slate-200 pb-5">
-              <h4 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              <h4 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
                 Install from package
               </h4>
             </div>
@@ -148,7 +148,7 @@ export function DownloadApp() {
 
           <div className="mb-6 pt-6">
             <div className="mb-6 border-b border-slate-200 pb-5">
-              <h4 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              <h4 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
                 Install from source
               </h4>
             </div>
