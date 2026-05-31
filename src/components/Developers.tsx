@@ -27,8 +27,19 @@ export function Developers() {
   const capabilities = [
   {
     title: 'Work with other agents',
-    copy:
-    'Give Codex, Claude Code, Cursor, VS Code, Slack, and MCP tools a shared place to write and retrieve context.'
+    copy: (
+      <>
+        Give Codex, Claude Code, Cursor, VS Code, Slack, and MCP tools a shared place to write and{' '}
+        <a
+          href={assetPath('images/mia_retrieve_context.png')}
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-brand-purple underline underline-offset-4 hover:text-[#5f19ff]">
+          retrieve context
+        </a>
+        .
+      </>
+    )
   },
   {
     title: 'Convert sources to Markdown',
@@ -67,7 +78,7 @@ export function Developers() {
               {/* Column 1: Mia Character */}
               <div className="meet-mia-image relative min-h-[360px] overflow-hidden bg-[#efefef] md:col-span-4">
                 <img
-                src={assetPath('mia_document_agent.jpg')}
+                src={assetPath('images/mia_document_agent.jpg')}
                 alt="Mia, your documentation agent"
                 className="absolute inset-0 h-full w-full object-cover object-center" />
               
