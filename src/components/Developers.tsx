@@ -1,71 +1,46 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { CheckCircle2, ChevronRight, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle2, ChevronRight } from 'lucide-react';
 import { assetPath } from '../assets';
+import { CodexResponseModal } from './CodexResponseModal';
 import { LogoMark } from './Logo';
 
 const retrieveContextDemo = {
   prompt:
   'List all the use cases from Mia(workspace: Docs, folder: About, note: Use Cases)',
   duration: 'Worked for 10s',
-  intro: 'From Mia’s Use Cases note, the use cases are:',
+  intro: 'From Mia\'s Use Cases note, the use cases are:',
   items: [
   {
-    title: 'Developers using AI agents',
+    title: 'Small Teams',
     copy:
-    'Use Mianotes as a documentation layer for Codex, Claude Code, Cursor, OpenClaw, VS Code agents, Slack bots, and local automation.'
+    'Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
   },
   {
-    title: 'AI agents and tools',
+    title: 'Startups',
     copy:
-    'Use Mianotes as local long-term memory for creating folders, saving notes, tagging, searching previous context, updating notes, and leaving handoff comments.'
-  },
-  {
-    title: 'Students',
-    copy:
-    'Turn lecture slides, book pages, whiteboards, images, handwritten notes, or audio recordings into searchable Markdown study notes.'
-  },
-  {
-    title: 'Small teams',
-    copy:
-    'Use Mianotes as a shared local knowledge base for specs, research, meetings, decisions, roadmaps, and launch plans.'
+    'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
   },
   {
     title: 'Researchers',
     copy:
-    'Keep links, papers, documents, notes, prompts, and summaries in one searchable place, especially when source material is messy.'
+    'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
   },
   {
-    title: 'Families and everyday use',
+    title: 'Developers',
     copy:
-    'Use it as a private home knowledge base for homework, school documents, trip plans, medical appointment notes, forms, and letters.'
-  }],
-  followUp: {
-    prompt: 'Add Startups to the list',
-    response: 'Done.',
-    item: {
-      number: 7,
-      title: 'Startups',
-      copy:
-      'Use Mianotes to collect ideas, product notes, competitor research, planning documents, specs, and AI output as you build.'
-    }
-  }
+    'Give agents a knowledge base they can search, update, and maintain through the API and MCP server.'
+  },
+  {
+    title: 'Students',
+    copy:
+    'Upload notes, book pages, slides, lectures, videos, or homework, then ask Mia to turn them into clean Markdown notes.'
+  },
+  {
+    title: 'Families',
+    copy:
+    'Run Mianotes on your Mac mini to save homework, book references, trip plans, and everyday notes, then ask Mia to summarise or organise them.'
+  }]
 };
-
-const retrieveContextTextLength =
-retrieveContextDemo.intro.length +
-retrieveContextDemo.items.reduce((total, item, index) =>
-total + `${index + 1}. `.length + item.title.length + item.copy.length,
-0) +
-retrieveContextDemo.followUp.response.length +
-`${retrieveContextDemo.followUp.item.number}. `.length +
-retrieveContextDemo.followUp.item.title.length +
-retrieveContextDemo.followUp.item.copy.length;
-
-const retrieveContextFirstResponseLength =
-retrieveContextDemo.intro.length +
-retrieveContextDemo.items.reduce((total, item, index) =>
-total + `${index + 1}. `.length + item.title.length + item.copy.length,
-0);
 
 const codexMessages = [
 {
@@ -89,120 +64,6 @@ const codexMessages = [
 
 export function Developers() {
   const [isContextDemoOpen, setIsContextDemoOpen] = useState(false);
-  const [typedCharacters, setTypedCharacters] = useState(0);
-  const retrieveContextScrollRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!isContextDemoOpen) {
-      setTypedCharacters(0);
-      return;
-    }
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    setTypedCharacters(0);
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsContextDemoOpen(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    const intervalId = window.setInterval(() => {
-      setTypedCharacters((current) => {
-        if (current >= retrieveContextTextLength) {
-          window.clearInterval(intervalId);
-          return current;
-        }
-
-        return Math.min(current + 2, retrieveContextTextLength);
-      });
-    }, 28);
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-      window.clearInterval(intervalId);
-    };
-  }, [isContextDemoOpen]);
-
-  useEffect(() => {
-    const scrollElement = retrieveContextScrollRef.current;
-
-    if (!scrollElement) {
-      return;
-    }
-
-    scrollElement.scrollTop = scrollElement.scrollHeight;
-  }, [typedCharacters]);
-
-  const retrieveContextResponse = useMemo(() => {
-    let offset = 0;
-
-    const reveal = (text: string) => {
-      const start = offset;
-      offset += text.length;
-
-      if (typedCharacters <= start) {
-        return '';
-      }
-
-      return text.slice(0, Math.min(text.length, typedCharacters - start));
-    };
-
-    const intro = reveal(retrieveContextDemo.intro);
-    const followUpResponse = reveal(retrieveContextDemo.followUp.response);
-    const followUpNumber = reveal(`${retrieveContextDemo.followUp.item.number}. `);
-    const followUpTitle = reveal(retrieveContextDemo.followUp.item.title);
-    const followUpCopy = reveal(retrieveContextDemo.followUp.item.copy);
-    const shouldShowFollowUpPrompt = typedCharacters >= retrieveContextFirstResponseLength;
-
-    return (
-      <div className="retrieve-context-response">
-        {intro ? <p>{intro}</p> : null}
-        <ol>
-          {retrieveContextDemo.items.map((item, index) => {
-            const number = reveal(`${index + 1}. `);
-            const title = reveal(item.title);
-            const copy = reveal(item.copy);
-
-            if (!number && !title && !copy) {
-              return null;
-            }
-
-            return (
-              <li key={item.title}>
-                <p>
-                  {number}
-                  <strong>{title}</strong>
-                </p>
-                {copy ? <span>{copy}</span> : null}
-              </li>
-            );
-          })}
-        </ol>
-        {shouldShowFollowUpPrompt ? (
-          <div className="codex-chat-message retrieve-context-prompt retrieve-context-follow-up-prompt">
-            {retrieveContextDemo.followUp.prompt}
-          </div>
-        ) : null}
-        {followUpResponse ? <p className="retrieve-context-follow-up-response">{followUpResponse}</p> : null}
-        {followUpNumber || followUpTitle || followUpCopy ? (
-          <ol className="retrieve-context-follow-up-list">
-            <li>
-              <p>
-                {followUpNumber}
-                <strong>{followUpTitle}</strong>
-              </p>
-              {followUpCopy ? <span>{followUpCopy}</span> : null}
-            </li>
-          </ol>
-        ) : null}
-      </div>
-    );
-  }, [typedCharacters]);
 
   const capabilities = [
   {
@@ -364,51 +225,14 @@ export function Developers() {
           </div>
         </div>
       </div>
-      {isContextDemoOpen ? (
-        <div
-          className="retrieve-context-overlay"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              setIsContextDemoOpen(false);
-            }
-          }}>
-          <div
-            className="retrieve-context-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Codex retrieving context from Mianotes">
-            <button
-              type="button"
-              className="retrieve-context-close"
-              aria-label="Close retrieve context demo"
-              onClick={() => setIsContextDemoOpen(false)}>
-              <X className="h-5 w-5" />
-            </button>
-            <div className="codex-chat-window retrieve-context-window">
-              <div className="codex-chat-titlebar">
-                <div className="codex-chat-dots" aria-hidden="true">
-                  <span className="bg-[#ff5f57]" />
-                  <span className="bg-[#ffbd2e]" />
-                  <span className="bg-[#28c840]" />
-                </div>
-                <span className="codex-chat-title">Codex</span>
-              </div>
-
-              <div className="retrieve-context-thread" ref={retrieveContextScrollRef}>
-                <div className="codex-chat-message retrieve-context-prompt">
-                  {retrieveContextDemo.prompt}
-                </div>
-                <div className="codex-chat-duration retrieve-context-duration">
-                  <span>{retrieveContextDemo.duration}</span>
-                  <ChevronRight className="h-4 w-4" />
-                </div>
-                {retrieveContextResponse}
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      <CodexResponseModal
+        isOpen={isContextDemoOpen}
+        onClose={() => setIsContextDemoOpen(false)}
+        prompt={retrieveContextDemo.prompt}
+        duration={retrieveContextDemo.duration}
+        intro={retrieveContextDemo.intro}
+        items={retrieveContextDemo.items}
+        ariaLabel="Codex retrieving context from Mianotes" />
     </section>);
 
 }
