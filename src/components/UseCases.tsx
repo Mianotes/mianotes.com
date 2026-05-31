@@ -19,7 +19,7 @@ export function UseCases() {
   },
   {
     icon: <Lightbulb className="w-6 h-6" />,
-    title: 'Entrepreneurs',
+    title: 'Startups',
     description:
     'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
   },
