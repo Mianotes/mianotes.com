@@ -79,10 +79,12 @@ export function DownloadApp() {
         </div>
 
         <div className="mx-auto mt-12 w-full lg:w-4/5">
-          <div className="pb-14">
-            <h4 className="pb-4 text-lg font-bold text-slate-900">
-              Install from package
-            </h4>
+          <div className="pb-16">
+            <div className="mb-8 border-b border-slate-200 pb-5">
+              <h4 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Install from package
+              </h4>
+            </div>
             <div className="grid gap-4 md:grid-cols-2">
               {packageDownloads.map((download) => (
                 <a
@@ -144,12 +146,14 @@ export function DownloadApp() {
             </div>
           </div>
 
-          <div className="mb-5">
-            <div className="max-w-3xl">
-              <h4 className="text-lg font-bold text-slate-900">
+          <div className="mb-6 pt-6">
+            <div className="mb-6 border-b border-slate-200 pb-5">
+              <h4 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                 Install from source
               </h4>
-              <p className="mt-2 text-base leading-relaxed text-slate-600">
+            </div>
+            <div className="max-w-3xl">
+              <p className="text-base leading-relaxed text-slate-600">
                 This command clones the web service and dashboard repos, installs the dependencies locally, builds the dashboard, and can start Mianotes for you.
               </p>
             </div>
