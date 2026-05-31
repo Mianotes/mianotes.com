@@ -109,7 +109,7 @@ export function Hero() {
                 Download Mianotes
               </button>
               <a
-                href="/docs/index.html"
+                href="/docs/latest/index.html"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl transition-all shadow-sm gap-2">
                 <BookOpen className="w-5 h-5 text-slate-400" />
                 Read the docs

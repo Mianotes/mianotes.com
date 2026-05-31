@@ -42,8 +42,7 @@ const screens: Screen[] = [
 },
 {
   title: 'Publish',
-  description:
-  'Share selected notes as a static site for your team, clients, or anyone following the project.',
+  description: <>Publish selected notes as a static site for your team, clients, or anyone following the project. (<a href="/docs/latest/index.html" style={{ textDecoration: "underline" }} target="_blank">View example</a>)</>,
   image: assetPath('screens/screen_publish.jpg')
 }];
 
