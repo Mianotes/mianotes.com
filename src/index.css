@@ -671,6 +671,131 @@ body {
   line-height: 1.55;
 }
 
+.retrieve-context-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: rgb(15 23 42 / 0.48);
+  padding: 28px;
+}
+
+.retrieve-context-modal {
+  position: relative;
+  width: min(1180px, 100%);
+  max-height: min(860px, calc(100vh - 56px));
+}
+
+.retrieve-context-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #7b8191;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.retrieve-context-close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.retrieve-context-window {
+  max-height: min(860px, calc(100vh - 56px));
+  overflow: auto;
+}
+
+.retrieve-context-thread {
+  display: flex;
+  flex-direction: column;
+  padding: 44px 48px 48px;
+}
+
+.retrieve-context-prompt {
+  align-self: flex-end;
+  max-width: 78%;
+  margin-right: 24px;
+  color: #202124;
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 1.35;
+}
+
+.retrieve-context-duration {
+  margin-top: 58px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eef0f3;
+  color: #7a7a7a;
+  font-size: 16px;
+}
+
+.retrieve-context-response {
+  margin-top: 26px;
+  color: #202124;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.retrieve-context-response p {
+  margin: 0;
+}
+
+.retrieve-context-response ol {
+  display: grid;
+  gap: 20px;
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0 0 0 24px;
+}
+
+.retrieve-context-response li {
+  padding-left: 4px;
+}
+
+.retrieve-context-response li p {
+  font-weight: 450;
+}
+
+.retrieve-context-response strong {
+  font-weight: 750;
+}
+
+.retrieve-context-response span {
+  display: block;
+  margin-top: 6px;
+  color: #26282d;
+}
+
+.retrieve-context-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 19px;
+  margin-top: 10px;
+  background: #7f5ccf;
+  animation: retrieve-cursor-blink 900ms steps(2, start) infinite;
+}
+
+@keyframes retrieve-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 1279px) {
   .codex-chat-window {
     min-height: auto;
@@ -678,6 +803,44 @@ body {
 }
 
 @media (max-width: 640px) {
+  .retrieve-context-overlay {
+    padding: 14px;
+  }
+
+  .retrieve-context-modal,
+  .retrieve-context-window {
+    max-height: calc(100vh - 28px);
+  }
+
+  .retrieve-context-close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .retrieve-context-thread {
+    padding: 26px 20px 30px;
+  }
+
+  .retrieve-context-prompt {
+    max-width: 100%;
+    margin-right: 0;
+    font-size: 15px;
+  }
+
+  .retrieve-context-duration {
+    margin-top: 34px;
+    font-size: 14px;
+  }
+
+  .retrieve-context-response {
+    font-size: 15px;
+  }
+
+  .retrieve-context-response ol {
+    gap: 18px;
+    padding-left: 18px;
+  }
+
   .codex-chat-titlebar {
     min-height: 70px;
     padding: 0 22px;
