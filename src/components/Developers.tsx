@@ -53,8 +53,17 @@ export function Developers() {
   },
   {
     title: 'Publish notes as static HTML',
-    copy:
-    'Turn selected notes into a static site you can share online, or keep offline.'
+    copy: (
+      <>
+        Turn selected notes into a{' '}
+        <a
+          href="/docs/latest/index.html"
+          className="font-semibold text-brand-purple underline underline-offset-4 hover:text-[#5f19ff]">
+          static site
+        </a>{' '}
+        you can share online, or keep offline.
+      </>
+    )
   }];
 
   return (
