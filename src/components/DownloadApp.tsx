@@ -160,7 +160,13 @@ export function DownloadApp() {
             <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
               <p>
-                Requires Git, Python 3.11+, and Node.js/npm. For media and OCR support, install FFmpeg and Tesseract first. Check the source install docs before running the command.
+                Requires Git, Python 3.11+, and Node.js/npm. For media and OCR support, install FFmpeg and Tesseract first. Check the{' '}
+                <a
+                  href="/docs/latest/#/getting-started/installing-from-github-d22c4f44.html"
+                  className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple">
+                  source install docs
+                </a>{' '}
+                before running the command.
               </p>
             </div>
           </div>
