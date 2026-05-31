@@ -778,6 +778,18 @@ body {
   color: #26282d;
 }
 
+.retrieve-context-follow-up-prompt {
+  margin-top: 28px;
+}
+
+.retrieve-context-follow-up-response {
+  margin-top: 20px !important;
+}
+
+.retrieve-context-response .retrieve-context-follow-up-list {
+  margin-top: 14px;
+}
+
 @media (max-width: 1279px) {
   .codex-chat-window {
     min-height: auto;

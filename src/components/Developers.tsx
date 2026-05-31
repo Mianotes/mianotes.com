@@ -38,10 +38,30 @@ const retrieveContextDemo = {
     title: 'Families and everyday use',
     copy:
     'Use it as a private home knowledge base for homework, school documents, trip plans, medical appointment notes, forms, and letters.'
-  }]
+  }],
+  followUp: {
+    prompt: 'Add Startups to the list',
+    response: 'Done.',
+    item: {
+      number: 7,
+      title: 'Startups',
+      copy:
+      'Use Mianotes to collect ideas, product notes, competitor research, planning documents, specs, and AI output as you build.'
+    }
+  }
 };
 
 const retrieveContextTextLength =
+retrieveContextDemo.intro.length +
+retrieveContextDemo.items.reduce((total, item, index) =>
+total + `${index + 1}. `.length + item.title.length + item.copy.length,
+0) +
+retrieveContextDemo.followUp.response.length +
+`${retrieveContextDemo.followUp.item.number}. `.length +
+retrieveContextDemo.followUp.item.title.length +
+retrieveContextDemo.followUp.item.copy.length;
+
+const retrieveContextFirstResponseLength =
 retrieveContextDemo.intro.length +
 retrieveContextDemo.items.reduce((total, item, index) =>
 total + `${index + 1}. `.length + item.title.length + item.copy.length,
@@ -133,6 +153,11 @@ export function Developers() {
     };
 
     const intro = reveal(retrieveContextDemo.intro);
+    const followUpResponse = reveal(retrieveContextDemo.followUp.response);
+    const followUpNumber = reveal(`${retrieveContextDemo.followUp.item.number}. `);
+    const followUpTitle = reveal(retrieveContextDemo.followUp.item.title);
+    const followUpCopy = reveal(retrieveContextDemo.followUp.item.copy);
+    const shouldShowFollowUpPrompt = typedCharacters >= retrieveContextFirstResponseLength;
 
     return (
       <div className="retrieve-context-response">
@@ -158,6 +183,23 @@ export function Developers() {
             );
           })}
         </ol>
+        {shouldShowFollowUpPrompt ? (
+          <div className="codex-chat-message retrieve-context-prompt retrieve-context-follow-up-prompt">
+            {retrieveContextDemo.followUp.prompt}
+          </div>
+        ) : null}
+        {followUpResponse ? <p className="retrieve-context-follow-up-response">{followUpResponse}</p> : null}
+        {followUpNumber || followUpTitle || followUpCopy ? (
+          <ol className="retrieve-context-follow-up-list">
+            <li>
+              <p>
+                {followUpNumber}
+                <strong>{followUpTitle}</strong>
+              </p>
+              {followUpCopy ? <span>{followUpCopy}</span> : null}
+            </li>
+          </ol>
+        ) : null}
       </div>
     );
   }, [typedCharacters]);
