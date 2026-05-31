@@ -3,7 +3,8 @@ import { Github } from 'lucide-react';
 import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
-const DOCS_URL = '/docs/index.html';
+const API_REFERENCE_URL = '/docs/latest/#/api-reference/api-overview-aa4fc408.html';
+const MCP_SERVER_URL = '/docs/latest/#/for-agents/mcp-server-1de5df7f.html';
 
 export function Footer() {
   return (
@@ -15,8 +16,11 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm font-medium text-slate-500">
-            <a href={DOCS_URL} className="hover:text-brand-purple transition-colors">
+            <a href={API_REFERENCE_URL} className="hover:text-brand-purple transition-colors">
               API Reference
+            </a>
+            <a href={MCP_SERVER_URL} className="hover:text-brand-purple transition-colors">
+              MCP Server
             </a>
             <a
               href="https://github.com/Mianotes/mianotes-web-service/issues"
