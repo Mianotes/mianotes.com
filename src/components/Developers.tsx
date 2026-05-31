@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { CheckCircle2, ChevronRight, X } from 'lucide-react';
 import { assetPath } from '../assets';
 import { LogoMark } from './Logo';
@@ -70,6 +70,7 @@ const codexMessages = [
 export function Developers() {
   const [isContextDemoOpen, setIsContextDemoOpen] = useState(false);
   const [typedCharacters, setTypedCharacters] = useState(0);
+  const retrieveContextScrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!isContextDemoOpen) {
@@ -106,6 +107,16 @@ export function Developers() {
       window.clearInterval(intervalId);
     };
   }, [isContextDemoOpen]);
+
+  useEffect(() => {
+    const scrollElement = retrieveContextScrollRef.current;
+
+    if (!scrollElement) {
+      return;
+    }
+
+    scrollElement.scrollTop = scrollElement.scrollHeight;
+  }, [typedCharacters]);
 
   const retrieveContextResponse = useMemo(() => {
     let offset = 0;
@@ -342,7 +353,7 @@ export function Developers() {
                 <span className="codex-chat-title">Codex</span>
               </div>
 
-              <div className="retrieve-context-thread">
+              <div className="retrieve-context-thread" ref={retrieveContextScrollRef}>
                 <div className="codex-chat-message retrieve-context-prompt">
                   {retrieveContextDemo.prompt}
                 </div>
