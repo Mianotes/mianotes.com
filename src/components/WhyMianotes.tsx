@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CodexResponseModal } from './CodexResponseModal';
 import { LogoMark } from './Logo';
 
 type SourceIcon = 'file' | 'link' | 'mic' | 'video' | 'image' | 'chat';
@@ -64,6 +65,38 @@ const previewNotes: Array<{
     ]
   }
 ];
+
+const docsReviewDemo = {
+  prompt: 'Review the docs in Mia(workspace: Docs) and update any missing or outdated info.',
+  duration: 'Worked for 54s',
+  intro: 'Done, I\'ve reviewed the Docs workspace and updated the outdated sections. Changes made:',
+  items: [
+  {
+    title: 'Python support',
+    copy:
+    'The docs said Python 3.14 was not supported, but pyproject.toml now allows >=3.11,<3.15, so Python 3.14 is in range. See pyproject.toml, line 6.'
+  },
+  {
+    title: 'Upload extensions',
+    copy:
+    'The docs missed .mp4, but the API supports it. See note_ingestion.py, line 49.'
+  },
+  {
+    title: 'Publishing themes',
+    copy:
+    'Some docs and API examples said only mialight and miadark were supported, but the current code lists four themes: mialight, miadocs, miadev, and miadark. See publishing_theme.py, line 51.'
+  },
+  {
+    title: 'LLM defaults',
+    copy:
+    'The docs listed gpt-5-nano as the default text model, but the code defaults OpenAI to gpt-4o-mini. See config.py, line 31, and mia.py, line 53.'
+  },
+  {
+    title: 'OpenAI model wording',
+    copy:
+    'I\'ve updated the docs to describe gpt-5-nano as a low-cost example, not the latest model or the default.'
+  }]
+};
 
 function PreviewSourceIcon({ icon, x, y }: { icon: SourceIcon; x: number; y: number }) {
   const common = {
@@ -184,6 +217,8 @@ function MarkdownConversionIllustration() {
 }
 
 export function WhyMianotes() {
+  const [isDocsReviewOpen, setIsDocsReviewOpen] = useState(false);
+
   return (
     <section id="why" className="py-[86px] bg-white bg-slate-50 border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,10 +237,21 @@ export function WhyMianotes() {
 
               <p>That is the real problem Mianotes solves.</p>
 
-              <p>It gives every project its own local knowledge hub, starting from a normal folder. Your team can capture information, process documents, organise notes, review changes, and publish selected knowledge when it is ready to share.</p>
+              <p>
+                It gives every project its own local knowledge hub, starting from a normal folder. Your team can collect information, process documents, organise notes, review changes, and publish selected knowledge when it is ready to share.
+              </p>
 
-              <p>Your agents can use the same context through the API and MCP server, so they are not guessing from incomplete prompts or disconnected files. They work from the knowledge your project has already collected.</p>
-
+              <p>Your agents can use the same context through the API and MCP server, so they are not guessing from incomplete prompts or disconnected files.{' '}
+                <a
+                  href="#docs-review-demo"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setIsDocsReviewOpen(true);
+                  }}
+                  className="why-inline-link">
+                  They work from the knowledge your project has already collected.
+                </a>{' '}
+              </p>
               <p>And because Mianotes runs locally, you can process documents on your own machine, use local AI models when privacy or cost matters, and stay in control of the files that matter most.</p>
             </div>
           </div>
@@ -213,6 +259,14 @@ export function WhyMianotes() {
           <MarkdownConversionIllustration />
         </div>
       </div>
+      <CodexResponseModal
+        isOpen={isDocsReviewOpen}
+        onClose={() => setIsDocsReviewOpen(false)}
+        prompt={docsReviewDemo.prompt}
+        duration={docsReviewDemo.duration}
+        intro={docsReviewDemo.intro}
+        items={docsReviewDemo.items}
+        ariaLabel="Codex reviewing Mianotes docs" />
     </section>);
 
 }

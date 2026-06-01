@@ -6,9 +6,9 @@ import { LogoMark } from './Logo';
 
 const retrieveContextDemo = {
   prompt:
-  'List all the use cases from Mia(workspace: Docs, folder: About, note: Use Cases)',
+  'Document the use cases in Mia(workspace: Docs, folder: About)',
   duration: 'Worked for 10s',
-  intro: 'From Mia\'s Use Cases note, the use cases are:',
+  intro: 'Done, I\'ve added 6 use cases to Docs / About.',
   items: [
   {
     title: 'Small Teams',
@@ -70,12 +70,12 @@ export function Developers() {
     title: 'Work with other agents',
     copy: (
       <>
-        Give Codex, Claude Code, Cursor, VS Code, Slack, and MCP tools a shared place to write and{' '}
+        Give Codex, Claude Code, Cursor, VS Code, Slack, and MCP tools a shared place to{' '}
         <button
           type="button"
           onClick={() => setIsContextDemoOpen(true)}
           className="cursor-pointer appearance-none bg-transparent p-0 align-baseline font-semibold text-brand-purple underline underline-offset-4 hover:text-[#5f19ff]">
-          retrieve context
+          write and retrieve context
         </button>
         .
       </>

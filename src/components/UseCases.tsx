@@ -39,7 +39,7 @@ export function UseCases() {
     icon: <GraduationCap className="w-6 h-6" />,
     title: 'Students',
     description:
-    'Upload notes, book pages, slides, lectures, videos, or homework, then ask Mia to turn them into clean Markdown notes.'
+    'Upload notes, book pages, slides, lectures, videos, or homework, and turn them into clean Markdown notes.'
   },
   {
     icon: <Home className="w-6 h-6" />,
