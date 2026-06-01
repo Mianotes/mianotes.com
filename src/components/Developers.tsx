@@ -116,7 +116,7 @@ export function Developers() {
           </h2>
           <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
             <p>
-              Mianotes gives Codex, Copilot, Claude Code, OpenClaw, Cursor, VS Code, Slack, and local agents a place to write down what they are doing as they work. Agents can save decisions, notes, source links, implementation details, and project context into one local workspace.
+              Mianotes gives Codex, Copilot, Claude Code, OpenClaw, Cursor, VS Code, Slack, and local agents a place to write down what they are doing as they work. It also gives local agents the <a href="https://github.com/Mianotes/mianotes-web-service/blob/main/skills/mianotes/SKILL.md" className="why-inline-link" target="_blank">SKILLS</a> they need to work with your project knowledge. They can save notes, search, retrieve, update, prompt Mia, index links, convert files, and use local folder knowledge before answering.
             </p>
           </div>
         </div>
@@ -146,7 +146,7 @@ export function Developers() {
                   </div>
 
                   <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                    Mia helps your agents turn their work into reusable documentation. She converts files, notes, and agent output into clean Markdown, extracts the useful details, adds structure, and prepares project knowledge for humans and AI agents to reuse.
+                    Markdown is the format developers and agents can both work with. It can become documentation pages, README files, prompt references, support notes, onboarding material, or source documents for AI agent skills. It's plain text, so it's easier to version, compare, review, store in Git, and feed into LLMs or data pipelines.
                   </p>
 
                   <div className="mt-12 flex items-center gap-6">

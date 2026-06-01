@@ -96,7 +96,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-4 text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Mianotes converts notes, links, documents, meeting recordings, videos, articles, images, and AI output into clean Markdown you can search, organise, edit, and reuse. Keep it local, share it with your group, or publish selected notes when you need to.
+            Mianotes converts notes, links, documents, meeting recordings, videos, articles, images, and AI output into structured Markdown you can search, organise, edit, and reuse. Keep it local, share it with your group, or publish selected notes when you need to.
           </p>
 
           <div className="relative inline-flex flex-col items-center mb-16">

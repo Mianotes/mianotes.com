@@ -23,7 +23,7 @@ const screens: Screen[] = [
   image: assetPath('screens/screen_editor.jpg')
 },
 {
-  title: 'Capture',
+  title: 'Convert',
   description:
   'Convert files, links, images, audio, and text into Markdown notes. People can read, edit, and share them, while AI agents can maintain them through APIs and MCP.',
   image: assetPath('screens/screen_capture.jpg')
