@@ -45,7 +45,7 @@ export function DownloadApp() {
     {
       label: 'Ubuntu',
       description: `Mianotes v${VERSION} (Ubuntu)`,
-      recommendation: 'Recommended for Linux, Debian, and Armbian',
+      recommendation: 'Recommended for Ubuntu, Debian, and Armbian',
       file: 'mianotes.deb',
       href: `https://github.com/Mianotes/install/releases/download/v${VERSION}/mianotes.deb`,
       icon: <UbuntuIcon className="h-6 w-6" />
@@ -108,17 +108,17 @@ export function DownloadApp() {
 
             <div className="mt-8 text-center">
               <p className="rounded-2xl border border-slate-200 bg-slate-50/80 px-5 py-4 text-sm font-medium text-slate-600">
-                Open{' '}
+                When the installation finishes, open{' '}
                 <a
                   href="http://localhost:8201"
                   className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple"
                 >
                   http://localhost:8201
                 </a>{' '}
-                when the installation finishes. Use it in your browser, or install it as a <a href="screens/screen_chrome_app.jpg" className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple" target="_blank">Chrome app</a>.
+                in your browser. You can use Mianotes there, or install it as a <a href="https://support.google.com/chrome/answer/9658361" className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple" target="_blank">Chrome app</a>.
               </p>
               <p className="mt-8 text-sm font-medium text-slate-500">
-                You can also manage Mianotes from Terminal:
+                You can also manage Mianotes from yout Terminal:
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
                 {packageCommands.map((command) => (

@@ -44,22 +44,22 @@ const retrieveContextDemo = {
 
 const codexMessages = [
 {
-  message: 'Before we discuss the architecture, get context from Mia(workspace: Mianotes, folder: Getting Started)',
+  message: 'Before we discuss the architecture, get context from Mia(workspace: Docs)',
   duration: '',
   response:
-    'Found the setup notes, first-run flow, and configuration guidance in Mianotes.'
+    'Got context from Mia Docs. I\'m caught up.'
 },
 {
-  message: 'Turn our architecture discussion into a spec and save it in Mia(workspace: Research, folder: Architecture)',
+  message: 'Turn our architecture discussion into a spec and save it in Mia(workspace: Ideas, folder: Architecture)',
   duration: '',
   response:
-    'Done. Added to Mianotes as "Spec: Multi-workspace architecture" in Research / Architecture.'
+    'Done. Added to Ideas / Architecture as "Spec: Multi-workspace architecture".'
 },
 {
-  message: 'Save file into Mia(workspace: Research, folder: Sources)',
+  message: 'Save "Open source productivity tools" pdf into Mia(workspace: Research, folder: Tools)',
   duration: 'Worked for 23s',
   response:
-    'Done. Saved the file to Mianotes, indexed it, and added it to Research / Sources.'
+    'Done. Created the Tools folder in Research and saved the PDF as "Open source productivity tools". Mia has queued it for parsing.'
 }];
 
 export function Developers() {

@@ -15,7 +15,7 @@ export function UseCases() {
     icon: <Users className="w-6 h-6" />,
     title: 'Small Teams',
     description:
-    'Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
+    'Brainstorm new ideas and first drafts. Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
   },
   {
     icon: <Lightbulb className="w-6 h-6" />,
@@ -27,7 +27,7 @@ export function UseCases() {
     icon: <Microscope className="w-6 h-6" />,
     title: 'Researchers',
     description:
-    'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
+    'Extract key points from PDFs and articles. Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
   },
   {
     icon: <Bot className="w-6 h-6" />,
@@ -39,7 +39,7 @@ export function UseCases() {
     icon: <GraduationCap className="w-6 h-6" />,
     title: 'Students',
     description:
-    'Upload notes, book pages, slides, lectures, videos, or homework, and turn them into clean Markdown notes.'
+    'Summarize PDFs. Turn notes, book pages, slides, lectures, videos, or homework, into clean Markdown notes. Get instant answers to your questions.'
   },
   {
     icon: <Home className="w-6 h-6" />,
