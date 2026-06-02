@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Copy, Download, Info, Terminal, X } from 'lucide-react';
+import { Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
 const VERSION = "0.3.0";
@@ -31,10 +31,7 @@ function UbuntuIcon({ className }: { className?: string }) {
 }
 
 export function DownloadApp() {
-  const [copied, setCopied] = useState(false);
   const [activeCommand, setActiveCommand] = useState<string | null>(null);
-  const installCommand =
-    '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Mianotes/install/HEAD/install.sh)"';
 
   const packageDownloads = [
     {
@@ -48,7 +45,7 @@ export function DownloadApp() {
     {
       label: 'Ubuntu',
       description: `Mianotes v${VERSION} (Ubuntu)`,
-      recommendation: 'Recommended for Linux servers',
+      recommendation: 'Recommended for Linux, Debian, and Armbian',
       file: 'mianotes.deb',
       href: `https://github.com/Mianotes/install/releases/download/v${VERSION}/mianotes.deb`,
       icon: <UbuntuIcon className="h-6 w-6" />
@@ -59,12 +56,6 @@ export function DownloadApp() {
     (command) => command.command === activeCommand
   );
 
-  const copyCommand = async () => {
-    await navigator.clipboard.writeText(installCommand);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  };
-
   return (
     <section id="download" className="py-[86px] bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,8 +64,7 @@ export function DownloadApp() {
             Download Mianotes
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            Download the native package for your operating system, or install
-            from the command line.
+            Download the native package for your operating system.
           </p>
         </div>
 
@@ -152,58 +142,27 @@ export function DownloadApp() {
                 Install from source
               </h4>
             </div>
-            <div className="max-w-3xl">
-              <p className="text-base leading-relaxed text-slate-600">
-                This command clones the web service and dashboard repos, installs the dependencies locally, builds the dashboard, and can start Mianotes for you.
-              </p>
-            </div>
-            <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
+            <div className="flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
               <p>
-                Requires Git, Python 3.11+, and Node.js/npm. For media and OCR support, install FFmpeg and Tesseract first. Check the{' '}
+                Developers can install Mianotes from source on Windows, macOS, and Linux by running the Mianotes install script:{' '}
+                <code className="rounded bg-white/70 px-1.5 py-0.5 font-mono text-[0.9em] font-semibold text-slate-700">
+                  Mianotes/install/install.sh
+                </code>
+                . This script expects you to install Git, Python, Node.js, npm, FFmpeg, Tesseract, and any platform dependencies yourself first. See the{' '}
                 <a
                   href="/docs/latest/#/getting-started/installing-from-github-d22c4f44.html"
                   className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple">
                   source install docs
                 </a>{' '}
-                before running the command.
+                for the full workflow.
               </p>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#080d10] shadow-2xl">
-            <div className="flex min-h-12 items-center justify-between border-b border-slate-700 bg-[#111820] px-4">
-              <div className="flex items-center gap-3">
-                <div className="flex space-x-2">
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={copyCommand}
-                className="inline-flex min-h-8 items-center gap-2 rounded-md px-2 text-xs font-semibold text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
-                aria-label="Copy source install command"
-              >
-                {copied ? (
-                  <Check className="h-5 w-5 text-emerald-300" />
-                ) : (
-                  <Copy className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-
-            <pre className="overflow-x-auto px-5 py-7 sm:px-7">
-              <code className="whitespace-nowrap font-mono text-sm sm:text-base">
-                <span className="text-slate-200">{installCommand}</span>
-              </code>
-            </pre>
-          </div>
-
           <div
             className="flex flex-col items-center text-center"
-            style={{ paddingTop: '60px' }}
+            style={{ paddingTop: '51px' }}
           >
             <a
               href="https://tally.so/r/xXvQbk"
