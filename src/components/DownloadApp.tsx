@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
-const VERSION = "0.3.0";
+const VERSION = "0.3.1";
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -118,7 +118,7 @@ export function DownloadApp() {
                 in your browser. You can use Mianotes there, or install it as a <a href="https://support.google.com/chrome/answer/9658361" className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple" target="_blank">Chrome app</a>.
               </p>
               <p className="mt-8 text-sm font-medium text-slate-500">
-                You can also manage Mianotes from yout Terminal:
+                You can also manage Mianotes from your Terminal:
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
                 {packageCommands.map((command) => (

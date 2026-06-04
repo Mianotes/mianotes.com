@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A developer workflow for running repeatable code reviews with Codex and Mianotes.">
+  <title>Running Repeatable Code Reviews with Codex and Mianotes</title>
+  <style>
+    :root {
+      --page-bg: #f6f6f7;
+      --card-bg: #ffffff;
+      --text: #18181c;
+      --muted: #666873;
+      --border: #e4e5ea;
+      --code-bg: #f5f5f6;
+      --code-border: #dedfe5;
+      --link: #2517d8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    article {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(28px, 6vw, 72px);
+      box-shadow: 0 18px 55px rgba(18, 18, 22, 0.05);
+    }
+
+    header {
+      margin-bottom: 42px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      max-width: 820px;
+      font-size: clamp(32px, 5vw, 38px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 56px 0 16px;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 34px 0 12px;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 0 22px;
+    }
+
+    ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 0 0 8px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      column-gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .author-logo {
+      grid-row: 1 / 3;
+      width: 38px;
+      height: 38px;
+      display: block;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 4px;
+    }
+
+    .author-name {
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .date {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: var(--code-bg);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9em;
+    }
+
+    .code-block {
+      position: relative;
+      margin: 20px 0 30px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 22px 52px 22px 24px;
+      overflow-x: hidden;
+      border: 1px solid var(--code-border);
+      border-radius: 14px;
+      background: var(--code-bg);
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    pre code {
+      display: block;
+      padding: 0;
+      background: transparent;
+      font-size: inherit;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-code {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid var(--code-border);
+      border-radius: 8px;
+      color: #555762;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .copy-code:hover {
+      color: #18181c;
+      border-color: #c8c9d0;
+    }
+
+    .copy-code svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    .copy-code.copied {
+      color: #18181c;
+      border-color: #bfc1ca;
+      background: #f0f0f3;
+    }
+
+    .closing {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 0;
+      }
+
+      article {
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 48px;
+      }
+
+      .code-block {
+        margin-left: -4px;
+        margin-right: -4px;
+      }
+
+      pre {
+        padding: 18px 48px 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <article>
+      <header>
+        <h1>Running Repeatable Code Reviews with Codex and Mianotes</h1>
+        <div class="meta">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="author-logo">
+  <defs>
+    <linearGradient id="miaLogoPinkGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff149d"></stop>
+      <stop offset="55%" stop-color="#d000c4"></stop>
+      <stop offset="100%" stop-color="#5f00d6"></stop>
+    </linearGradient>
+    <linearGradient id="miaLogoPurpleGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e24cff"></stop>
+      <stop offset="55%" stop-color="#9a35ff"></stop>
+      <stop offset="100%" stop-color="#2500ff"></stop>
+    </linearGradient>
+    <linearGradient id="miaLogoBlueGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00b8f5"></stop>
+      <stop offset="55%" stop-color="#006be8"></stop>
+      <stop offset="100%" stop-color="#0026b8"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M73 102 L181 204 L181 409 L73 307 Z" fill="url(#miaLogoPinkGradient)"></path>
+  <path d="M197 102 L305 204 L305 409 L197 307 Z" fill="url(#miaLogoPurpleGradient)"></path>
+  <path d="M322 102 L430 204 L430 409 L322 307 Z" fill="url(#miaLogoBlueGradient)"></path>
+</svg>
+          <div class="author-name">Mianotes</div>
+          <div class="date">4 Jun 2026</div>
+        </div>
+      </header>
+
+      <p>If you have agents writing code, you need agents reviewing and testing it too. That changes your role. You are still building software, but you are also deciding how the work gets written, checked, documented, and reused.</p>
+
+      <p>Mianotes gives every project its own local knowledge hub, starting from a normal folder on your machine. You or your team can collect specs, prompts, documents, manuals, research, code review notes, and LLM output in one place.</p>
+
+      <p>Your agents can use that same context through the API and MCP server, so they do not have to rely on incomplete prompts or disconnected files. They work from the knowledge your project has already collected.</p>
+
+      <p>I'll show one practical developer workflow.</p>
+
+      <p>I'm going to install Mianotes on my MacBook and use it to manage prompts for a GitHub repo. Then I'll connect Codex to Mianotes through MCP, ask Codex to read one of my saved prompts, run a code review, and save the result back into Mianotes.</p>
+
+      <p>The repo I'll use is:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Desktop/projects/senseibox</code></pre>
+</div>
+
+      <p>Inside that repo, I create two folders:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Desktop/projects/senseibox/prompts
+Desktop/projects/senseibox/qa</code></pre>
+</div>
+
+      <p>The first folder stores reusable prompts. The second stores QA outputs, reviews, findings, and agent reports.</p>
+
+      <h2>Install Mianotes</h2>
+
+      <p>Mianotes supports package installs for macOS and Ubuntu.</p>
+
+      <p>For most users, this is the right path because it installs Mianotes into the normal system locations and starts the services through the operating system.</p>
+
+      <h3>macOS</h3>
+
+      <p>Download the latest macOS package:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>https://github.com/Mianotes/install/releases/latest/download/mianotes.pkg</code></pre>
+</div>
+
+      <p>Open the package and follow the installer. Once installed, open <a href="http://localhost:8201">http://localhost:8201</a> in your browser.</p>
+
+      <p>You can also manage Mianotes from your Terminal:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>mianotes open
+mianotes doctor
+mianotes status
+mianotes logs
+mianotes start
+mianotes stop
+mianotes uninstall</code></pre>
+</div>
+
+      <p>The macOS package includes the runtime tools Mianotes needs, including Python, ripgrep, ffmpeg, and ffprobe. On Apple Silicon, it also includes Tesseract OCR and English OCR data.</p>
+
+      <h2>First run</h2>
+
+      <p>Open Mianotes in your browser and create the first user. This first user becomes the admin user. After that, you can start using the web app straight away, but for this workflow we'll create workspaces inside an existing GitHub repo.</p>
+
+      <h2>Prepare the repo folders</h2>
+
+      <p>On my MacBook, I'll create two folders inside my Senseibox repo:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>mkdir -p ~/Desktop/projects/senseibox/prompts
+mkdir -p ~/Desktop/projects/senseibox/qa</code></pre>
+</div>
+
+      <p>The <code>prompts</code> workspace stores reusable prompts as Markdown files. The <code>qa</code> workspace stores the output from agent work, such as code reviews, audits, bug reports, test plans, and release checks.</p>
+
+      <h2>Add the workspaces in Mianotes</h2>
+
+      <p>In Mianotes, go to Settings and add a new workspace.</p>
+
+      <p>Use this folder path:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>~/Desktop/projects/senseibox/prompts</code></pre>
+</div>
+
+      <p>Name it:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Prompts</code></pre>
+</div>
+
+      <p>Then add another workspace.</p>
+
+      <p>Use this folder path:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>~/Desktop/projects/senseibox/qa</code></pre>
+</div>
+
+      <p>Name it:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>QA</code></pre>
+</div>
+
+      <p>Mianotes keeps the notes as Markdown files inside each workspace folder, so your prompt content stays easy to inspect, back up, and commit when you want to.</p>
+
+      <h2>Create your first prompt note</h2>
+
+      <p>First, click the home icon in the left navigation bar to return to the workspace list. You should see both workspaces:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Prompts
+QA</code></pre>
+</div>
+
+      <p>Click the <code>Prompts</code> workspace to open it. Once inside this workspace:</p>
+
+      <ol>
+        <li>Create a folder called <code>Code review</code>.</li>
+        <li>Inside that folder, create a text note with this title: <code>Python performance</code>.</li>
+        <li>Add this text:</li>
+      </ol>
+
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code># Prompt
+
+Review this codebase as a senior backend engineer with a performance and production-readiness focus. 
+
+Audit the working tree read-only. Do not modify files.
+
+Look specifically for:
+
+- Full-table or full-workspace scans on request paths
+- N+1 queries and per-result follow-up queries
+- Eager loading that multiplies rows across multiple child collections
+- Python-side aggregation that should be done in SQL
+- Missing pagination, limits, timeouts, or streaming
+- Large in-memory I/O, including uploads, downloads, URL fetches, ZIP generation, and file parsing
+- Missing or weak composite indexes for common filters and sorts
+- Filesystem/database mismatches that create slow authorization checks
+- Security issues that overlap with performance, especially SSRF, unbounded remote fetches, and public file access checks
+- Maintainability issues that make performance fixes risky or hard to test
+
+For each issue, include:
+
+- Severity: Critical / High / Medium / Low
+- File and line number or section
+- Current behavior
+- Why it matters in production
+- Specific fix, preferably with a short code sketch when useful
+- Expected impact
+
+Then produce a &quot;Best 20/80 Order&quot; section with the safest implementation order.
+
+Be harsh but practical. Prefer fixes that preserve the existing API behavior and response schemas. Call out where a suggested index or query change should be validated with `EXPLAIN QUERY PLAN` before committing to it.</code></pre>
+</div>
+
+      <p>When you save the note, Mianotes writes it as a Markdown file:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>~/Desktop/projects/senseibox/prompts/markdown/code-review/python-performance-3ac696c0.md</code></pre>
+</div>
+
+      <p>This is one of the best parts of Mianotes. You're using a web app, but the important content is still plain Markdown, versioned and on disk.</p>
+
+      <h2>Create an API key for Codex</h2>
+
+      <p>Next, connect Codex to Mianotes through MCP.</p>
+
+      <p>In Mianotes, go to:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Settings &gt; Create an API key</code></pre>
+</div>
+
+      <p>Mianotes saves the key into its service environment file, so the MCP server can use it without passing the token directly to Codex or copying it to your clipboard.</p>
+
+      <h2>Add the Mianotes MCP server to Codex</h2>
+
+      <p>First, make sure the MCP command is available:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>command -v mianotes-mcp</code></pre>
+</div>
+
+      <p>Now install Codex CLI if you haven't already, then add the Mianotes MCP server:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>codex mcp add mianotes --env MIANOTES_CLIENT_NAME=Codex -- mianotes-mcp</code></pre>
+</div>
+
+      <p>Check that Codex can see it:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>codex mcp list</code></pre>
+</div>
+
+      <p>You can also check the desktop app: Codex &gt; Settings &gt; MCP servers. Mianotes should appear in the MCP server list.</p>
+
+      <p>If Codex was already open, start a new session so it picks up the updated MCP configuration and API key.</p>
+
+      <h2>Ask Codex to use the prompt</h2>
+
+      <p>Now you can ask Codex to read the prompt from Mianotes, use it against your codebase, and save the output back into the QA workspace.</p>
+
+      <p>Use a prompt like this:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Review the code inside /path/to/my-app using the prompt in Mia(workspace: Prompts, folder: Code review, note: Python performance) and save the results in Mia(workspace: QA, folder: Senseibox) as &quot;My First Code Review&quot;</code></pre>
+</div>
+
+      <p>Codex should use the Mianotes MCP server to find the prompt, read it, run the review, and create a new note in the QA workspace.</p>
+
+      <p>You'll see something like this:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Worked for 49s
+Saved to Mia in QA / Senseibox as My First Code Review.
+
+Note ID: 89fc7784-e623-460d-b064-1a1e6daca5a5</code></pre>
+</div>
+
+      <h2>View the result in Mianotes</h2>
+
+      <p>Go back to Mianotes. Click the home icon, switch to the <code>QA</code> workspace, then open the <code>Senseibox</code> folder. Inside that folder, you should find:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>My First Code Review</code></pre>
+</div>
+
+      <p>That note now contains the output from Codex. You can read it in the web app, edit it, tag it, share it, or keep it as part of the project QA history. You can also find it on disk under the QA workspace as Markdown, and add it to your git repo.</p>
+
+      <h2>Why this workflow works well</h2>
+
+      <p>This setup gives you a clean separation between reusable prompts and generated outputs.</p>
+
+      <p>Your prompts live in:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>~/Desktop/projects/senseibox/prompts</code></pre>
+</div>
+
+      <p>Your QA results live in:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>~/Desktop/projects/senseibox/qa</code></pre>
+</div>
+
+      <p>Both are local, plain Markdown, and versioned. They can sit inside your project structure.</p>
+
+      <p>That makes Mianotes useful as a shared memory layer between you and your agents. You can write the prompt once, reuse it from Codex, and keep the result where agents can find it, read it, and use it to fix issues. You also avoid losing useful agent output inside a one-off chat session. Codex can save its findings back into Mianotes, and the next agent can search or reuse that context later.</p>
+
+      <h2>A simple pattern to repeat</h2>
+
+      <p>Once this is working, you can create more prompt folders.</p>
+
+      <p>For example:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>Prompts / Code review
+Prompts / Security
+Prompts / Release checks
+Prompts / Architecture
+Prompts / Documentation</code></pre>
+</div>
+
+      <p>And you can save agent outputs into matching QA folders:</p>
+      <div class="code-block">
+  <button class="copy-code" type="button" aria-label="Copy code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg></button>
+  <pre><code>QA / Senseibox
+QA / Release reviews
+QA / Security audits
+QA / Architecture notes</code></pre>
+</div>
+
+      <section class="closing">
+        <p>The important part is the habit. Store the prompt once. Ask the agent to use it by name. Save the output back into Mianotes. That turns your local project folder into a working memory system for your codebase, your prompts, and your agents.</p>
+
+        <p>This also gives you a practical way to automate repetitive engineering tasks while keeping control of the process. Each agent starts from a clear prompt, works from the same project context, and saves the result where you can review it. That matters because agent work needs feedback loops. You need to see what the agent did, why it made those decisions, and how the output changes over time.</p>
+
+        <p>This is the first step towards a more autonomous team of agents, where your job is to shape the reasoning, review the decisions, and improve the evaluation process.</p>
+
+        <p>Thanks for reading. If you try this workflow, start small: one prompt, one agent, one saved result. Then build from there.</p>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.querySelectorAll(".copy-code").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const block = button.closest(".code-block");
+        const code = block ? block.querySelector("code") : null;
+        if (!code) return;
+
+        try {
+          await navigator.clipboard.writeText(code.innerText);
+          button.classList.add("copied");
+          setTimeout(() => button.classList.remove("copied"), 900);
+        } catch (error) {
+          const range = document.createRange();
+          range.selectNodeContents(code);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

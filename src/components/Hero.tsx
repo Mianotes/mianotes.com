@@ -116,7 +116,7 @@ export function Hero() {
               </a>
             </div>
             <p className="pt-5 text-sm text-slate-500">
-              Built on top of the open-source Microsoft MarkItDown and Ollama engines.
+              Built on top of the open-source Microsoft MarkItDown, Tesseract, FFmpeg, and Ollama engines.
             </p>
           </div>
 
