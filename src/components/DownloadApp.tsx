@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
-const VERSION = "0.3.1";
+const VERSION = "0.3.4";
 
 function AppleIcon({ className }: { className?: string }) {
   return (

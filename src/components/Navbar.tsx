@@ -5,7 +5,7 @@ import { scrollToSection } from '../utils/scrollToSection';
 import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
-const DOCS_URL = '/docs/latest/index.html';
+const DOCS_URL = '/docs/latest/';
 
 function jumpToTop() {
   const root = document.documentElement;
