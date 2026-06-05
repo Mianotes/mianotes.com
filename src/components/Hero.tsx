@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Download, BookOpen, Code2, Home, Shield } from 'lucide-react';
 import {
   OllamaIcon,
@@ -44,6 +44,39 @@ const integrations = [
   name: 'MCP',
   Icon: MCPIcon
 }];
+const ENGINE_LINE =
+  'Built on top of the open-source Microsoft MarkItDown, Tesseract, FFmpeg, and Ollama engines.';
+
+function TypewriterLine({ text }: { text: string }) {
+  const [visibleText, setVisibleText] = useState('');
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) {
+      setVisibleText(text);
+      return;
+    }
+
+    setVisibleText('');
+    let index = 0;
+    const timer = window.setInterval(() => {
+      index += 1;
+      setVisibleText(text.slice(0, index));
+      if (index >= text.length) {
+        window.clearInterval(timer);
+      }
+    }, 28);
+
+    return () => window.clearInterval(timer);
+  }, [text]);
+
+  return (
+    <span className="hero-typewriter" aria-label={text}>
+      <span aria-hidden="true">{visibleText}</span>
+      <span className="hero-typewriter-cursor" aria-hidden="true">_</span>
+    </span>
+  );
+}
 
 export function Hero() {
   return (
@@ -116,7 +149,7 @@ export function Hero() {
               </a>
             </div>
             <p className="pt-5 text-sm text-slate-500">
-              Built on top of the open-source Microsoft MarkItDown, Tesseract, FFmpeg, and Ollama engines.
+              <TypewriterLine text={ENGINE_LINE} />
             </p>
           </div>
 

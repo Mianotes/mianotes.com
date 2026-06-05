@@ -74,6 +74,32 @@
   animation: hero-folder-pointer-tap 13s ease-in-out 1.4s infinite;
 }
 
+.hero-typewriter {
+  display: inline;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.hero-typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #7f5ccf;
+  animation: hero-typewriter-blink 900ms steps(2, start) infinite;
+}
+
+@keyframes hero-typewriter-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes hero-folder-pointer-tap {
   0%,
   5.4%,
