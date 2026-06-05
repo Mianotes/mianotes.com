@@ -3,6 +3,10 @@ import { Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
 const VERSION = "0.3.4";
+const DOCKER_COMMANDS = [
+  '$ curl -fsSL https://raw.githubusercontent.com/Mianotes/install/main/docker-compose.yml -o docker-compose.yml',
+  '$ docker compose up -d'
+];
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -139,24 +143,39 @@ export function DownloadApp() {
           <div className="mb-6 pt-6">
             <div className="mb-6 border-b border-slate-200 pb-5">
               <h4 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                Install from source
+                Install with Docker
               </h4>
             </div>
-            <div className="flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
+            <p className="max-w-4xl text-base leading-relaxed text-slate-600">
+              Docker is useful when you want Mianotes to run in a self-contained environment on a laptop,
+              workstation, or server. The Mianotes container runs the web service and the dashboard together.
+              You can also install multiple Docker containers and assign each of them their own custom domain
+              name, such as <code className="font-mono text-[0.9em] font-semibold text-slate-700">devs.local</code>{' '}
+              and <code className="font-mono text-[0.9em] font-semibold text-slate-700">qa.local</code>.
+            </p>
+            <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
               <p>
-                Developers can install Mianotes from source on Windows, macOS, and Linux by running the Mianotes install script:{' '}
-                <code className="font-mono text-[0.9em] font-semibold text-slate-700">
-                  Mianotes/install/install.sh
-                </code>
-                . This script expects you to install Git, Python, Node.js, npm, FFmpeg, Tesseract, and any platform dependencies yourself first. See the{' '}
-                <a
-                  href="/docs/latest/#/getting-started/installing-from-github-d22c4f44.html"
-                  className="font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple">
-                  source install docs
-                </a>{' '}
-                for the full workflow.
+                Install Docker Desktop, Docker Engine, or another Docker-compatible runtime that supports Docker Compose.
               </p>
+            </div>
+            <div className="mt-6 overflow-hidden rounded-[16px] border border-slate-200 bg-white shadow-sm">
+              <div className="flex items-center gap-3 border-b border-slate-200 bg-slate-50 px-4 py-3">
+                <div className="flex space-x-2">
+                  <div className="h-3 w-3 rounded-full bg-red-400"></div>
+                  <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
+                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                </div>
+                <div className="flex items-center gap-2 font-mono text-xs font-semibold text-slate-500">
+                  <Terminal className="h-3.5 w-3.5 text-brand-purple" />
+                  Docker
+                </div>
+              </div>
+              <pre className="overflow-auto px-5 py-5 text-left sm:px-6">
+                <code className="whitespace-pre font-mono text-sm leading-relaxed text-slate-800">
+                  {DOCKER_COMMANDS.join('\n')}
+                </code>
+              </pre>
             </div>
           </div>
 
