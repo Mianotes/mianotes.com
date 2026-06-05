@@ -4,8 +4,10 @@ import { packageCommands } from '../data/packageCommands';
 
 const VERSION = "0.3.4";
 const DOCKER_COMMANDS = [
+  '$ mkdir mianotes',
+  '$ cd mianotes',
   '$ curl -fsSL https://raw.githubusercontent.com/Mianotes/install/main/docker-compose.yml -o docker-compose.yml',
-  '$ docker compose up -d'
+  '$ docker compose up -d',
 ];
 
 function AppleIcon({ className }: { className?: string }) {
@@ -147,18 +149,8 @@ export function DownloadApp() {
               </h4>
             </div>
             <p className="max-w-4xl text-base leading-relaxed text-slate-600">
-              Docker is useful when you want Mianotes to run in a self-contained environment on a laptop,
-              workstation, or server. The Mianotes container runs the web service and the dashboard together.
-              You can also install multiple Docker containers and assign each of them their own custom domain
-              name, such as <code className="font-mono text-[0.9em] font-semibold text-slate-700">devs.local</code>{' '}
-              and <code className="font-mono text-[0.9em] font-semibold text-slate-700">qa.local</code>.
+              Docker is useful when you want to run Mianotes in a self-contained environment on a laptop, or server. The Mianotes container runs both the web service and the dashboard. You can also run multiple Docker containers and assign each one a custom local domain, such as <code className="font-mono text-[0.9em] font-semibold text-slate-700">dev.local</code> and <code className="font-mono text-[0.9em] font-semibold text-slate-700">product.local</code>.
             </p>
-            <div className="mt-5 flex gap-3 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-relaxed text-slate-600">
-              <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
-              <p>
-                Install Docker Desktop, Docker Engine, or another Docker-compatible runtime that supports Docker Compose.
-              </p>
-            </div>
             <div className="mt-6 overflow-hidden rounded-[16px] border border-slate-200 bg-white shadow-sm">
               <div className="flex items-center gap-3 border-b border-slate-200 bg-slate-50 px-4 py-3">
                 <div className="flex space-x-2">
@@ -167,7 +159,6 @@ export function DownloadApp() {
                   <div className="h-3 w-3 rounded-full bg-green-400"></div>
                 </div>
                 <div className="flex items-center gap-2 font-mono text-xs font-semibold text-slate-500">
-                  <Terminal className="h-3.5 w-3.5 text-brand-purple" />
                   Docker
                 </div>
               </div>

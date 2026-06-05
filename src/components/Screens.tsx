@@ -29,13 +29,13 @@ const screens: Screen[] = [
   image: assetPath('screens/screen_capture.jpg')
 },
 {
-  title: 'Job Queue',
+  title: 'Monitor',
   description:
   'Watch Mianotes work in real time. See who added what, what Mia is processing, and where something needs attention.',
   image: assetPath('screens/screen_console.jpg')
 },
 {
-  title: 'Users',
+  title: 'Manage Users',
   description:
   'Give each folder its own team. Add users, assign admins, and keep project knowledge managed by the people working on it.',
   image: assetPath('screens/screen_users.jpg')
