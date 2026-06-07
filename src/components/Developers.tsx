@@ -155,10 +155,10 @@ export function Developers() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-slate-900">
-                        Built with open source.
+                        Install in minutes.
                       </p>
                       <p className="text-sm text-slate-900">
-                        Mianotes uses Microsoft MarkItDown for file conversion and Ollama for local AI models.
+                        Install the package or container, let users create accounts, then connect Claude Code and Codex with the Mianotes skill.
                       </p>
                     </div>
                   </div>
