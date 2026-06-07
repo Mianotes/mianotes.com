@@ -40,11 +40,6 @@ const retrieveContextDemo = {
     'Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
   },
   {
-    title: 'Startups',
-    copy:
-    'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
-  },
-  {
     title: 'Researchers',
     copy:
     'Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
@@ -77,7 +72,7 @@ const codexMessages = [
   message: 'Mia, turn this architecture conversation into a spec and save it in the Proposals workspace, inside the Architecture folder',
   duration: '',
   response:
-    'Done. I saved it with the title “Architecture discussion spec”.'
+    'Done. I saved it with the title "Architecture discussion spec".'
 },
 {
   message: 'Mia, import this PDF into the Research workspace, inside the Tools folder',
@@ -137,7 +132,7 @@ export function Developers() {
         Turn selected notes into a{' '}
         <a
           href="/docs/latest/index.html"
-          className="font-semibold text-brand-purple underline underline-offset-4 hover:text-[#5f19ff]">
+          className="font-semibold text-[#7f5ccf] underline underline-offset-4 hover:text-[#5f19ff]">
           static site
         </a>{' '}
         you can share online, or keep offline.
@@ -185,24 +180,26 @@ export function Developers() {
                   </div>
 
                   <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                    Markdown is the format developers and agents can both work with. It can become documentation pages, README files, prompt references, support notes, onboarding material, or source documents for AI agent skills. It's plain text, so it's easier to version, compare, review, store in Git, and feed into LLMs or data pipelines.
+                    Markdown is the format developers and agents can both work with. It's plain text, so it's easier to version, compare, review, store, and feed into LLMs or data pipelines.
                   </p>
 
-                  <div className="mt-12 flex items-center gap-6">
-                    <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-slate-100 p-3 flex items-center justify-center shrink-0">
-                      <LogoMark className="h-full w-full" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-900">
-                        Install in minutes.
-                      </p>
-                      <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-900">
+                  <div className="mt-12 grid gap-5">
+                    <p className="text-sm font-semibold text-slate-900">
+                      Mianotes takes minutes to set up: download the macOS or Ubuntu package, or run it in Docker.
+                    </p>
+                    <div className="flex items-center gap-6">
+                      <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-slate-100 p-3 flex items-center justify-center shrink-0">
+                        <LogoMark className="h-full w-full" />
+                      </div>
+                      <div className="grid gap-1.5 text-sm text-slate-900">
                         {installSteps.map((step, index) => (
-                          <React.Fragment key={step.title}>
+                          <div
+                            key={step.title}
+                            className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-2">
                             <span
                               className="text-slate-900"
                               aria-hidden="true">
-                              {['①', '②'][index]}
+                              {`${index + 1}.`}
                             </span>
                             <button
                               type="button"
@@ -211,10 +208,9 @@ export function Developers() {
                               aria-label={`View ${step.title} screenshot`}>
                               {step.label}
                             </button>
-                            {index < installSteps.length - 1 ? <span aria-hidden="true" /> : null}
-                          </React.Fragment>
+                          </div>
                         ))}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
