@@ -6,9 +6,9 @@ import { LogoMark } from './Logo';
 
 const retrieveContextDemo = {
   prompt:
-  'Document the use cases in Mia(workspace: Docs, folder: About)',
+  'Mia, review the codebase, identify the product use cases, and document them in the About folder in the Docs workspace',
   duration: 'Worked for 10s',
-  intro: 'Done, I\'ve added 6 use cases to Docs / About.',
+  intro: 'Done. I saved them in the Docs workspace under About.',
   items: [
   {
     title: 'Small Teams',
@@ -44,22 +44,22 @@ const retrieveContextDemo = {
 
 const codexMessages = [
 {
-  message: 'Before we discuss the architecture, get context from Mia(workspace: Docs)',
+  message: 'Mia, get context from the Docs workspace before we talk about the architecture',
   duration: '',
   response:
-    'Got context from Mia Docs. I\'m caught up.'
+    'Done. I\'m ready to discuss the architecture with that context.'
 },
 {
-  message: 'Turn our architecture discussion into a spec and save it in Mia(workspace: Ideas, folder: Architecture)',
+  message: 'Mia, turn this architecture conversation into a spec and save it in the Proposals workspace, inside the Architecture folder',
   duration: '',
   response:
-    'Done. Added to Ideas / Architecture as "Spec: Multi-workspace architecture".'
+    'Done. I saved it with the title “Architecture discussion spec”.'
 },
 {
-  message: 'Save "Open source productivity tools" pdf into Mia(workspace: Research, folder: Tools)',
+  message: 'Mia, import this PDF into the Research workspace, inside the Tools folder',
   duration: 'Worked for 23s',
   response:
-    'Done. Created the Tools folder in Research and saved the PDF as "Open source productivity tools". Mia has queued it for parsing.'
+    'Done. I imported "Open source productivity tools" as Markdown into the Research workspace, inside the Tools folder.'
 }];
 
 export function Developers() {
@@ -201,7 +201,7 @@ export function Developers() {
                         <span className="bg-[#ffbd2e]" />
                         <span className="bg-[#28c840]" />
                       </div>
-                      <span className="codex-chat-title">Codex</span>
+                      <span className="codex-chat-title">Claude/Codex/Cursor</span>
                     </div>
 
                     <div className="codex-chat-thread">

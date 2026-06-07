@@ -157,7 +157,7 @@ export function CodexResponseModal({
               <span className="bg-[#ffbd2e]" />
               <span className="bg-[#28c840]" />
             </div>
-            <span className="codex-chat-title">Codex</span>
+            <span className="codex-chat-title">Claude/Codex/Cursor</span>
           </div>
 
           <div className="retrieve-context-thread" ref={scrollRef}>

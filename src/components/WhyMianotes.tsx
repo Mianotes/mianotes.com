@@ -67,7 +67,7 @@ const previewNotes: Array<{
 ];
 
 const docsReviewDemo = {
-  prompt: 'Review the docs in Mia(workspace: Docs) and update any missing or outdated info.',
+  prompt: 'Mia, review the documentation in the Docs workspace and update anything that is missing or outdated',
   duration: 'Worked for 54s',
   intro: 'Done, I\'ve reviewed the Docs workspace and updated the outdated sections. Changes made:',
   items: [
@@ -90,11 +90,6 @@ const docsReviewDemo = {
     title: 'LLM defaults',
     copy:
     'The docs listed gpt-5-nano as the default text model, but the code defaults OpenAI to gpt-4o-mini. See config.py, line 31, and mia.py, line 53.'
-  },
-  {
-    title: 'OpenAI model wording',
-    copy:
-    'I\'ve updated the docs to describe gpt-5-nano as a low-cost example, not the latest model or the default.'
   }]
 };
 
@@ -266,7 +261,7 @@ export function WhyMianotes() {
         duration={docsReviewDemo.duration}
         intro={docsReviewDemo.intro}
         items={docsReviewDemo.items}
-        ariaLabel="Codex reviewing Mianotes docs" />
+        ariaLabel="Claude/Codex reviewing Mianotes docs" />
     </section>);
 
 }
