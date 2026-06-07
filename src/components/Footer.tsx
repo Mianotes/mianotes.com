@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 import { XIcon } from './SocialIcons';
 
 const API_REFERENCE_URL = '/docs/latest/api-reference/api-overview-aa4fc408.html';
-const MCP_SERVER_URL = '/docs/latest/for-agents/mcp-server-1de5df7f.html';
+const MCP_SERVER_URL = '/docs/latest/connecting-tools/mcp-server-1de5df7f.html';
 
 export function Footer() {
   return (
