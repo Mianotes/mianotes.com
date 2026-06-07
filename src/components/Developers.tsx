@@ -1,8 +1,39 @@
-import React, { useState } from 'react';
-import { CheckCircle2, ChevronRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { CheckCircle2, ChevronRight, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { assetPath } from '../assets';
 import { CodexResponseModal } from './CodexResponseModal';
 import { LogoMark } from './Logo';
+
+type InstallStep = {
+  title: string;
+  label: string;
+  description: string;
+  image: string;
+};
+
+const installSteps: InstallStep[] = [
+{
+  title: 'Install Mianotes',
+  label: 'Install Mianotes on a laptop or server.',
+  description:
+    'Install the package or container where your team wants Mianotes to run.',
+  image: assetPath('screens/screen_chrome_app.jpg')
+},
+{
+  title: 'Create Your Account',
+  label: 'Create your account.',
+  description:
+    'Create the first account, then invite the people who need access to the workspace.',
+  image: assetPath('screens/screen_chrome_app.jpg')
+},
+{
+  title: 'Add the Mianotes Skill',
+  label: 'Add the Mianotes skill.',
+  description:
+    'Connect Claude Code or Codex so your AI tools can read from and write to Mianotes.',
+  image: assetPath('screens/screen_chrome_app.jpg')
+}];
 
 const retrieveContextDemo = {
   prompt:
@@ -64,6 +95,21 @@ const codexMessages = [
 
 export function Developers() {
   const [isContextDemoOpen, setIsContextDemoOpen] = useState(false);
+  const [activeInstallStep, setActiveInstallStep] = useState<InstallStep | null>(null);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveInstallStep(null);
+    };
+    if (activeInstallStep) {
+      window.addEventListener('keydown', onKey);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [activeInstallStep]);
 
   const capabilities = [
   {
@@ -157,8 +203,24 @@ export function Developers() {
                       <p className="text-sm font-semibold text-slate-900">
                         Install in minutes.
                       </p>
-                      <p className="text-sm text-slate-900">
-                        Install the package or container, let users create accounts, then connect Claude Code and Codex with the Mianotes skill.
+                      <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-900">
+                        {installSteps.map((step, index) => (
+                          <React.Fragment key={step.title}>
+                            <span
+                              className="font-semibold text-brand-purple"
+                              aria-hidden="true">
+                              {['①', '②', '③'][index]}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setActiveInstallStep(step)}
+                              className="appearance-none bg-transparent p-0 text-left font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-purple"
+                              aria-label={`View ${step.title} screenshot`}>
+                              {step.label}
+                            </button>
+                            {index < installSteps.length - 1 ? <span aria-hidden="true" /> : null}
+                          </React.Fragment>
+                        ))}
                       </p>
                     </div>
                   </div>
@@ -233,6 +295,52 @@ export function Developers() {
         intro={retrieveContextDemo.intro}
         items={retrieveContextDemo.items}
         ariaLabel="Codex retrieving context from Mianotes" />
+
+      <AnimatePresence>
+        {activeInstallStep ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[1000] flex items-center justify-center bg-slate-950/75 p-4 backdrop-blur-sm sm:p-8"
+            onClick={() => setActiveInstallStep(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${activeInstallStep.title} screenshot`}>
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              className="relative w-full max-w-5xl"
+              onClick={(event) => event.stopPropagation()}>
+              <button
+                type="button"
+                onClick={() => setActiveInstallStep(null)}
+                className="absolute right-4 top-4 z-10 inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-white text-slate-950 shadow-xl transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                aria-label="Close">
+                <X className="mx-0.5 h-4 w-4" />
+              </button>
+
+              <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
+                <img
+                  src={activeInstallStep.image}
+                  alt={`${activeInstallStep.title} screenshot`}
+                  className="max-h-[calc(100vh-11rem)] w-full object-contain object-top" />
+                <div className="border-t border-slate-200 bg-white px-6 py-4">
+                  <h3 className="text-lg font-semibold text-slate-900">
+                    {activeInstallStep.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    {activeInstallStep.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>);
 
 }
