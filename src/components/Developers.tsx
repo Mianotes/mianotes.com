@@ -21,13 +21,6 @@ const installSteps: InstallStep[] = [
   image: assetPath('screens/screen_chrome_app.jpg')
 },
 {
-  title: 'Create Your Account',
-  label: 'Create your account.',
-  description:
-    'Create the first account, then invite the people who need access to the workspace.',
-  image: assetPath('screens/screen_chrome_app.jpg')
-},
-{
   title: 'Add the Mianotes Skill',
   label: 'Add the Mianotes skill.',
   description:
@@ -120,7 +113,7 @@ export function Developers() {
         <button
           type="button"
           onClick={() => setIsContextDemoOpen(true)}
-          className="cursor-pointer appearance-none bg-transparent p-0 align-baseline font-semibold text-brand-purple underline underline-offset-4 hover:text-[#5f19ff]">
+          className="cursor-pointer appearance-none bg-transparent p-0 align-baseline font-semibold text-[#7f5ccf] underline underline-offset-4 hover:text-[#5f19ff] focus:outline-none">
           write and retrieve context
         </button>
         .
@@ -207,14 +200,14 @@ export function Developers() {
                         {installSteps.map((step, index) => (
                           <React.Fragment key={step.title}>
                             <span
-                              className="font-semibold text-brand-purple"
+                              className="text-slate-900"
                               aria-hidden="true">
-                              {['①', '②', '③'][index]}
+                              {['①', '②'][index]}
                             </span>
                             <button
                               type="button"
                               onClick={() => setActiveInstallStep(step)}
-                              className="appearance-none bg-transparent p-0 text-left font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand-purple hover:decoration-brand-purple focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-brand-purple"
+                              className="appearance-none bg-transparent p-0 text-left text-slate-900 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-700 hover:decoration-slate-500 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-slate-400"
                               aria-label={`View ${step.title} screenshot`}>
                               {step.label}
                             </button>
