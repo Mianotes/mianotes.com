@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Download, Info, Terminal, X } from 'lucide-react';
 import { packageCommands } from '../data/packageCommands';
 
-const VERSION = "0.3.6";
+const VERSION = "0.3.7";
 
 const DOCKER_COMMANDS = [
   '$ mkdir mianotes',

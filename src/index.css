@@ -714,7 +714,7 @@ body {
 
 .retrieve-context-close {
   position: absolute;
-  top: 18px;
+  top: 50%;
   right: 18px;
   z-index: 2;
   display: inline-flex;
@@ -724,6 +724,7 @@ body {
   justify-content: center;
   border-radius: 999px;
   color: #7b8191;
+  transform: translateY(-50%);
   transition:
     background 160ms ease,
     color 160ms ease;
@@ -819,7 +820,6 @@ body {
   }
 
   .retrieve-context-close {
-    top: 12px;
     right: 12px;
   }
 

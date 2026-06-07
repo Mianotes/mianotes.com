@@ -143,13 +143,6 @@ export function CodexResponseModal({
         role="dialog"
         aria-modal="true"
         aria-label={ariaLabel}>
-        <button
-          type="button"
-          className="retrieve-context-close"
-          aria-label="Close Codex response demo"
-          onClick={onClose}>
-          <X className="h-5 w-5" />
-        </button>
         <div className="codex-chat-window retrieve-context-window">
           <div className="codex-chat-titlebar">
             <div className="codex-chat-dots" aria-hidden="true">
@@ -158,6 +151,13 @@ export function CodexResponseModal({
               <span className="bg-[#28c840]" />
             </div>
             <span className="codex-chat-title">Claude/Codex/Cursor</span>
+            <button
+              type="button"
+              className="retrieve-context-close"
+              aria-label="Close Codex response demo"
+              onClick={onClose}>
+              <X className="h-5 w-5" />
+            </button>
           </div>
 
           <div className="retrieve-context-thread" ref={scrollRef}>

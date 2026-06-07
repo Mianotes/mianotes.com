@@ -18,14 +18,14 @@ const installSteps: InstallStep[] = [
   label: 'Install Mianotes on a laptop or server.',
   description:
     'Install the package or container where your team wants Mianotes to run.',
-  image: assetPath('screens/screen_chrome_app.jpg')
+  image: assetPath('screens/screen_install_01.jpg')
 },
 {
   title: 'Add the Mianotes Skill',
   label: 'Add the Mianotes skill.',
   description:
     'Connect Claude Code or Codex so your AI tools can read from and write to Mianotes.',
-  image: assetPath('screens/screen_chrome_app.jpg')
+  image: assetPath('screens/screen_install_02.jpg')
 }];
 
 const retrieveContextDemo = {
