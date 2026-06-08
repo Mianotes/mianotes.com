@@ -21,11 +21,11 @@ const previewNotes: Array<{
   },
   {
     icon: 'mic',
-    title: 'quarterly_earnings_report.md',
+    title: 'user_journeys.md',
     subtitle: 'Transcribed from meeting',
     tags: [
-      { label: '#earnings', width: 116, tone: 'purple' },
-      { label: '#report', width: 78, tone: 'slate' }
+      { label: '#ux', width: 60, tone: 'purple' },
+      { label: '#user-journeys', width: 124, tone: 'slate' }
     ]
   },
   {
@@ -67,29 +67,29 @@ const previewNotes: Array<{
 ];
 
 const docsReviewDemo = {
-  prompt: 'Mia, review the documentation in the Docs workspace and update anything that is missing or outdated',
+  prompt: 'Mia, cross-reference the mianotes.com repo with the Requirements folder in the Product workspace. Tell me what\'s missing and what conflicts with the PRD.',
   duration: 'Worked for 54s',
-  intro: 'Done, I\'ve reviewed the Docs workspace and updated the outdated sections. Changes made:',
+  intro: 'I compared the mianotes.com repo against the Requirements in the Product workspace. Checked Marketing copy and Docs pages. The repo mostly matches the PRDs, but I found a few gaps.',
   items: [
   {
     title: 'Python support',
     copy:
-    'The docs said Python 3.14 was not supported, but pyproject.toml now allows >=3.11,<3.15, so Python 3.14 is in range. See pyproject.toml, line 6.'
+    'The docs said Python 3.14 was not supported, but pyproject.toml now allows >=3.11,<3.15, so Python 3.14 is in range.'
   },
   {
     title: 'Upload extensions',
     copy:
-    'The docs missed .mp4, but the API supports it. See note_ingestion.py, line 49.'
+    'The docs missed .mp4, but the API supports it.'
   },
   {
-    title: 'Publishing themes',
+    title: 'HTML format',
     copy:
-    'Some docs and API examples said only mialight and miadark were supported, but the current code lists four themes: mialight, miadocs, miadev, and miadark. See publishing_theme.py, line 51.'
+    'The homepage copy still focuses on Markdown, but the PRDs mention Markdown and HTML. Suggested fix: update the hero and Why section to mention both formats.'
   },
   {
     title: 'LLM defaults',
     copy:
-    'The docs listed gpt-5-nano as the default text model, but the code defaults OpenAI to gpt-4o-mini. See config.py, line 31, and mia.py, line 53.'
+    'The docs listed gpt-5-nano as the default text model, but the code defaults OpenAI to gpt-4o-mini.'
   }]
 };
 
@@ -224,19 +224,15 @@ export function WhyMianotes() {
               <span>Why Mianotes exists</span>
             </h2>
             <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
-              <p>Most project knowledge is a mess. You start with a document, then the work spreads across folders, apps, recordings, chat, email, links, PDFs, spreadsheets, screenshots, and LLM messages.</p>
+              <p>Product and engineering teams need the same context, but they do not work in the same way.</p>
 
-              <p>Now multiply that by every project, every team, and every different way of working.</p>
+              <p>Product managers want a simple place to write, collect research, shape requirements, and explain decisions. Engineers want clear spec files they can review, version, and keep close to the code. AI agents need structured content they can search, update, and use before they answer or make changes.</p>
 
-              <p>Important context gets buried. Everyone has their own research, notes, findings, and files sitting on their own machine or locked inside different cloud apps. So the work becomes less about using knowledge and more about moving it around. People spend hours asking for files, forwarding links, copying data between tools, re-explaining decisions, and giving AI agents the same context again and again.</p>
+              <p>Most tools solve only one side of this. Word processors are good for writing, but they do not fit well in repos or agent workflows. Developer tools work well with Markdown and files, but they can feel too rigid for product planning, research, and everyday notes. AI chats help with individual tasks, but the context often stays trapped in prompts, recordings, links, and scattered documents.</p>
 
-              <p>That is the real problem Mianotes solves.</p>
+              <p>Mianotes bridges that gap.</p>
 
-              <p>
-                It gives every project its own local knowledge hub, starting from a normal folder. Your team can collect information, process documents, organise notes, review changes, and publish selected knowledge when it is ready to share.
-              </p>
-
-              <p>Your agents can use the same context through the API and MCP server, so they are not guessing from incomplete prompts or disconnected files.{' '}
+              <p>It gives each project a local knowledge hub where product, engineering, and agents can work from the same source. Product teams can write in a simple editor, and Mianotes converts their work into clean Markdown and HTML so engineers can review, store, compare, publish, or keep it alongside the repo.{' '}
                 <a
                   href="#docs-review-demo"
                   onClick={(event) => {
@@ -244,10 +240,12 @@ export function WhyMianotes() {
                     setIsDocsReviewOpen(true);
                   }}
                   className="why-inline-link">
-                  They work from the knowledge your project has already collected.
-                </a>{' '}
-              </p>
-              <p>And because Mianotes runs locally, you can process documents on your own machine, use local AI models when privacy or cost matters, and stay in control of the files that matter most.</p>
+                  Agents can access the same context
+                </a>{' '} through the API and MCP server.</p>
+
+              <p>While agents can access it through the API and MCP server.</p>
+
+              <p>Run it locally, use local AI models when privacy or cost matters, share it with your group, or publish selected notes when they are ready.</p>
             </div>
           </div>
 

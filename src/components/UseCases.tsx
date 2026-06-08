@@ -15,37 +15,37 @@ export function UseCases() {
     icon: <Users className="w-6 h-6" />,
     title: 'Small Teams',
     description:
-    'Brainstorm new ideas and first drafts. Keep meeting notes, decisions, files, research, links, and project context in one shared workspace.'
+    'Capture ideas, drafts, meeting notes, decisions, research, links, files, and project context in one shared workspace. Share SKILLs so your team works from the same source.'
   },
   {
     icon: <Lightbulb className="w-6 h-6" />,
-    title: 'Startups',
+    title: 'Product Managers',
     description:
-    'Collect ideas, customer calls, product notes, competitor research, planning documents, and AI output as you build.'
+    'Turn notes, context, requirements, and priorities into PRDs, tech specs, and roadmaps. Use SKILLs to prepare clear handoffs for engineering.'
+  },
+  {
+    icon: <Bot className="w-6 h-6" />,
+    title: 'AI Engineers',
+    description:
+    'Give agents a workspace they can search, update, and maintain through the API and MCP server. Store prompts, docs, decisions, and system context in one place.'
   },
   {
     icon: <Microscope className="w-6 h-6" />,
     title: 'Researchers',
     description:
-    'Extract key points from PDFs and articles. Keep papers, articles, links, interviews, videos, prompts, and summaries tagged and organised in one searchable hub.'
-  },
-  {
-    icon: <Bot className="w-6 h-6" />,
-    title: 'Developers',
-    description:
-    'Give agents a knowledge base they can search, update, and maintain through the API and MCP server.'
+    'Extract useful points from PDFs, papers, articles, interviews, and videos. Keep sources, notes, prompts, and summaries tagged, searchable, and ready to reuse.'
   },
   {
     icon: <GraduationCap className="w-6 h-6" />,
     title: 'Students',
     description:
-    'Summarize PDFs. Turn notes, book pages, slides, lectures, videos, or homework, into clean Markdown notes. Get instant answers to your questions.'
+    'Turn PDFs, slides, lectures, videos, book pages, and homework into Markdown and HTML. Use SKILLs to create summaries, mock tests, flashcards, and study notes.'
   },
   {
     icon: <Home className="w-6 h-6" />,
     title: 'Families',
     description:
-    'Run Mianotes on your Mac mini to save homework, book references, trip plans, and everyday notes, then ask Mia to summarise or organise them.'
+    'Run Mianotes at home to save homework, book references, trip plans, receipts, and everyday notes. Ask Mia to summarise, organise, or find what you need.'
   }];
 
   return (

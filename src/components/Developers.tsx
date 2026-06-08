@@ -150,7 +150,7 @@ export function Developers() {
           </h2>
           <div className="mt-8 space-y-5 text-lg text-slate-600 leading-relaxed">
             <p>
-              Mianotes gives Codex, Copilot, Claude Code, OpenClaw, Cursor, VS Code, Slack, and local agents a place to write down what they are doing as they work. It also gives local agents the <a href="https://github.com/Mianotes/mianotes-web-service/blob/main/skills/mianotes/SKILL.md" className="why-inline-link" target="_blank">SKILLS</a> they need to work with your project knowledge. They can save notes, search, retrieve, update, prompt Mia, index links, convert files, and use local folder knowledge before answering.
+              Mianotes gives Codex, Copilot, Claude Code, OpenClaw, Cursor, and local agents a place to write down what they are doing as they work. It also gives your local agents the <a href="https://github.com/Mianotes/mianotes-web-service/blob/main/skills/mianotes/SKILL.md" className="why-inline-link" target="_blank">SKILL</a> they need to work with your project knowledge. They can create and update notes, search, convert files, and use local folder knowledge before answering.
             </p>
           </div>
         </div>

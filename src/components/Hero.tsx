@@ -68,9 +68,9 @@ export function Hero() {
           </div>
 
           <h1 className="text-[2.6rem] md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-            Turn any{' '}
+            Turn{' '}
             <span className="hero-folder-word text-gradient">
-              folder
+              product notes
               <svg
                 className="hero-folder-pointer"
                 width="34"
@@ -92,11 +92,11 @@ export function Hero() {
                   strokeLinecap="round" />
               </svg>
             </span>{' '}
-            into a <br className="hidden md:block" />searchable knowledge hub.
+              into technical specs your team and agents can use.<br className="hidden md:block" />
           </h1>
 
           <p className="mt-4 text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Mianotes converts notes, links, documents, meeting recordings, videos, articles, images, and AI output into structured Markdown you can search, organise, edit, and reuse. Keep it local, share it with your group, or publish selected notes when you need to.
+            Mianotes turns notes, links, documents, PDFs, images, recordings, videos, and AI output into Markdown and HTML you can search, organise, edit, share, and reuse. You can also apply hundreds of SKILLs after conversion to transform your content into tech specs, PRDs, user stories, summaries, and other structured outputs. Keep it local, share with your group, or publish selected notes.
           </p>
 
           <div className="relative inline-flex flex-col items-center mb-16">
